@@ -5,6 +5,7 @@ add_theme_support('title-tag'); // ajouter auto. le titre du site dans l'en-têt
 
 function nathalie_mota_custom_styles()
 {
+  wp_enqueue_style('nathalie-mota-style', get_stylesheet_uri()); // charge style.css
   wp_enqueue_style('normalize_style', get_stylesheet_directory_uri() . '/assets/css/normalize.css');
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_custom_styles');
