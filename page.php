@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head></head>
-
-<body>
+<?php get_header(); ?>
   <h1>Nathalie Mota : page.php</h1>
-</body>
-
-</html>
+<?php get_footer(); ?>
