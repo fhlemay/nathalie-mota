@@ -4,7 +4,7 @@
 <head></head>
 
 <body>
-  <h1>Nathalie Mota : index.php</h1>
+  <h1>Nathalie Mota : page.php</h1>
 </body>
 
 </html>
