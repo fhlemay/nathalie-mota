@@ -6,3 +6,27 @@ Description: Thème pour le site de la photographe Nathalie Mota
 Version: 1.0
 Text Domain: nathalie-mota
 */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__menu {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 45px;
+}
+
+.footer__menu {
+  list-style-type: none;
+  display: flex;
+}
+
+.menu-item {
+  font-family: 'Space Mono';
+  font-size: 16px;
+  text-decoration: inherit;
+  text-transform: uppercase;
+}
