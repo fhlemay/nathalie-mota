@@ -14,3 +14,11 @@ register_nav_menus(array(
   'main' => 'Menu Principal',
   'footer' => 'Bas de page',
 ));
+
+/*
+* Charger les styles référant aux polices de Google installées localement.
+*/
+function gfonts_scripts() {
+  wp_enqueue_style( 'space-mono-font', get_stylesheet_directory_uri() . '/assets/css/fonts.css' );
+}
+add_action( 'wp_enqueue_scripts', 'gfonts_scripts' );
