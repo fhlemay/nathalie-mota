@@ -17,7 +17,7 @@
   text-decoration: none;
 }
 
-.header {
+.header .content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +28,7 @@
   gap: var(--header-menu-gap);
 }
 
-.footer {
+.footer .content {
   display: flex;
   align-items: center;
   justify-content: center;

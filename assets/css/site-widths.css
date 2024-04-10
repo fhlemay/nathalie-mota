@@ -1,0 +1,20 @@
+body {
+  max-width: var(--site-full-width);
+  margin: auto;
+  width: 100%;
+}
+
+.content {
+  max-width: var(--site-content-width);
+  /* width: 80%; */
+  margin: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: var(--site-full-width)) {
+
+  body,
+  .content {
+    width: auto;
+  }
+}

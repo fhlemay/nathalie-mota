@@ -1,4 +1,6 @@
 :root {
+  --site-full-width: 1440px;
+  --site-content-width: 80%;
   --text-color: #000000;
   --menu-font: 'Space Mono';
   --menu-font-size: 16px;
