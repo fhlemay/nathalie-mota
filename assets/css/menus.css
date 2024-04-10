@@ -17,6 +17,10 @@
   text-decoration: none;
 }
 
+.menu a:hover {
+  font-weight: 700;
+}
+
 .header .content {
   display: flex;
   justify-content: space-between;
