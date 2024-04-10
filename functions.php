@@ -10,9 +10,16 @@ function nathalie_mota_custom_styles()
   wp_enqueue_style('nathalie-mota-variables', get_stylesheet_directory_uri() . '/assets/css/variables.css');
   wp_enqueue_style('nathalie-mota-site-widths', get_stylesheet_directory_uri() . '/assets/css/site-widths.css');
   wp_enqueue_style('nathalie-mota-menus', get_stylesheet_directory_uri() . '/assets/css/menus.css');
+  wp_enqueue_style('nathalie-mota-modal-contact', get_stylesheet_directory_uri() . '/assets/css/modal-contact.css');
   // wp_enqueue_style('nathalie-mota-style', get_stylesheet_uri()); // charge style.css
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_custom_styles');
+
+function nathalie_mota_scripts()
+{
+  wp_enqueue_script('nathalie-mota-modal-contact-script', get_stylesheet_directory_uri() . '/assets/js/modal-contact.js' );
+}
+add_action('wp_enqueue_scripts', 'nathalie_mota_scripts');
 
 register_nav_menus(array(
   'main' => 'Menu Principal',
@@ -32,3 +39,17 @@ function add_text_to_footer_nav_menu($items, $args)
   return $items;
 }
 add_filter('wp_nav_menu_items', 'add_text_to_footer_nav_menu', 10, 2);
+
+function add_contact_link_to_main_nav_menu($items, $args)
+{
+  if ($args->theme_location == 'main') {
+    // Add your custom content here. You can use HTML to format it.
+    $custom_text = '<li class="menu-item menu-item-type-custom menu-item-object-custom"><a id="openModal" href="#">Contact</a></li>';
+
+    // Append the custom text to the menu items
+    $items .= $custom_text;
+  }
+
+  return $items;
+}
+add_filter('wp_nav_menu_items', 'add_contact_link_to_main_nav_menu', 10, 2);
