@@ -2,4 +2,8 @@
   --text-color: #000000;
   --menu-font: 'Space Mono';
   --menu-font-size: 16px;
+  --header-height: 80px;
+  --footer-height: 40px;
+  --header-menu-gap: 45px;
+  --footer-menu-gap: 86px;
 }

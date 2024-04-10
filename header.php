@@ -13,12 +13,13 @@
   <?php wp_body_open(); ?>
 
   <header class="header">
-    <a href="<?php echo home_url('/'); ?>">
+    <a class="logo" href="<?php echo home_url('/'); ?>">
       <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-desktop.svg" alt="Logo">
     </a>
-    <?php wp_nav_menu( array( 'theme_location' => 'main',
-                              'container' => 'ul',
-                              'menu_class' => 'header__menu',
-          ));
+    <?php wp_nav_menu(array(
+      'theme_location' => 'main',
+      'container' => 'nav',
+      'menu_class' => 'menu',
+    ));
     ?>
   </header>

@@ -1,8 +1,9 @@
 <footer class="footer">
-  <?php wp_nav_menu(array('theme_location' => 'footer',
-                              'container' => 'ul',
-                              'menu_class' => 'footer__menu',
-        ));
+  <?php wp_nav_menu(array(
+    'theme_location' => 'footer',
+    'container' => 'nav',
+    'menu_class' => 'menu',
+  ));
   ?>
 </footer>
 <?php wp_footer(); ?>
