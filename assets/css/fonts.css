@@ -13,3 +13,19 @@
   font-display: swap;
   src: url('/wp-content/themes/nathalie-mota/assets/fonts/space_mono_bold.woff2') format('woff2');
 }
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/wp-content/themes/nathalie-mota/assets/fonts/poppins.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/wp-content/themes/nathalie-mota/assets/fonts/poppins_bold.woff2') format('woff2');
+}
