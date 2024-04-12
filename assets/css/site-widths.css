@@ -18,3 +18,13 @@ body {
     width: auto;
   }
 }
+
+
+@media (max-width: 375px) {
+
+  .content {
+    max-width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}

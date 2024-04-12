@@ -17,7 +17,11 @@ add_action('wp_enqueue_scripts', 'nathalie_mota_custom_styles');
 
 function nathalie_mota_scripts()
 {
-  wp_enqueue_script('nathalie-mota-modal-contact-script', get_stylesheet_directory_uri() . '/assets/js/modal-contact.js' );
+  wp_enqueue_script('nathalie-mota-modal-contact-script', get_stylesheet_directory_uri() . '/assets/js/modal-contact.js');
+  wp_enqueue_script('nathalie-mota-mobile-menu-script', get_stylesheet_directory_uri() . '/assets/js/mobile-menu.js');
+  wp_localize_script('nathalie-mota-mobile-menu-script', 'variables', array(
+    'themeUrl' => get_stylesheet_directory_uri(),
+  ));
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_scripts');
 
