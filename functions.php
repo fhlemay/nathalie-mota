@@ -60,15 +60,15 @@ add_filter('wp_nav_menu_items', 'add_contact_link_to_main_nav_menu', 10, 2);
 
 // Images sizes
 // From the beginings : no resize
-add_filter('intermediate_image_sizes_advanced', 'disable_image_resizing');
-function disable_image_resizing($sizes)
-{
-  return [];
-}
-add_filter('big_image_size_threshold', '__return_false');
-update_option('thumbnail_size_w', 0);
-update_option('thumbnail_size_h', 0);
-update_option('medium_size_w', 0);
-update_option('medium_size_h', 0);
-update_option('large_size_w', 0);
-update_option('large_size_h', 0);
+// add_filter('intermediate_image_sizes_advanced', 'disable_image_resizing');
+// function disable_image_resizing($sizes)
+// {
+//   return [];
+// }
+// add_filter('big_image_size_threshold', '__return_false');
+update_option('thumbnail_size_w', 150);
+update_option('thumbnail_size_h', 150);
+update_option('medium_size_w', 300);
+update_option('medium_size_h', 300);
+update_option('large_size_w', 768);
+update_option('large_size_h', 768);
