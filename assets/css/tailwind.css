@@ -588,6 +588,48 @@ video {
   }
 }
 
+.col-end-2 {
+  grid-column-end: 2 !important;
+}
+
+.row-start-1 {
+  grid-row-start: 1 !important;
+}
+
+.row-end-1 {
+  grid-row-end: 1 !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.grid {
+  display: grid !important;
+}
+
 .resize {
   resize: both !important;
+}
+
+.columns-1 {
+  -moz-columns: 1 !important;
+       columns: 1 !important;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.gap-2 {
+  gap: 0.5rem !important;
+}
+
+.bg-red-50 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity)) !important;
 }
