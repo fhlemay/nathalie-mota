@@ -4,7 +4,19 @@ module.exports = {
   // content: ["./**/*.php"],
   content: ["./single-photo.php"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        spacemono: ["Space Mono", "sans-serif"],
+        poppins: ["Poppins", "serif"],
+      },
+
+      fontWeight: {
+        light: 300,
+        regular: 400,
+        medium: 500,
+        bold: 700,
+      },
+    },
   },
   plugins: [],
 };
