@@ -2,7 +2,8 @@
 module.exports = {
   important: true,
   // content: ["./**/*.php"],
-  content: ["./single-photo.php"],
+  // content: ["./single-photo.php"],
+  content: ["./views/*.twig", "./views/components/*.twig"], // Where are the templates
   theme: {
     extend: {
       fontFamily: {
