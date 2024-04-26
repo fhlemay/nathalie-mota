@@ -1,0 +1,19 @@
+<nav class="absolute top-full left-0 h-[calc(100vh-80px)] w-full
+            md:static md:h-auto md:w-auto">
+    <ul
+        class="
+        flex flex-col items-center justify-center gap-7 h-full bg-red text-white bg-mota-red uppercase font-spacemono text-4xl
+        md:flex-row md:gap-11 md:text-black md:bg-white md:text-base
+        ">
+
+        {% for item in main_menu.items %}
+            <li class="nav-main-item {{ item.classes|join(' ') }}">
+                <a
+                    class="hover:font-bold" href="{{ item.link }}"
+                    {{ item.is_target_blank ? 'target="_blank"' }}
+                >{{ item.title }}</a>
+            </li>
+        {% endfor %}
+        <li><a id="showModal" class="hover:font-bold" href="#">Contact</a></li>
+    </ul>
+</nav>
