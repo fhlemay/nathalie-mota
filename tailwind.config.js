@@ -26,6 +26,9 @@ module.exports = {
         "mota-mid-grey": "#D8D8D8",
         "mota-light-grey": "#E5E5E5",
       },
+      boxShadow: {
+        mota: "0px 4px 14px 10px rgba(0, 0, 0, 0.03)",
+      },
     },
   },
   plugins: [],
