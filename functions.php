@@ -25,8 +25,8 @@ add_action('wp_enqueue_scripts', 'nathalie_mota_custom_styles');
 
 function nathalie_mota_scripts()
 {
-    wp_enqueue_script('nathalie-mota-modal-contact-script', get_stylesheet_directory_uri() . '/assets/js/modal-contact.js');
-    wp_enqueue_script('nathalie-mota-mobile-menu-script', get_stylesheet_directory_uri() . '/assets/js/mobile-menu.js');
+    // wp_enqueue_script('nathalie-mota-modal-contact-script', get_stylesheet_directory_uri() . '/assets/js/modal-contact.js');
+    // wp_enqueue_script('nathalie-mota-mobile-menu-script', get_stylesheet_directory_uri() . '/assets/js/mobile-menu.js');
     wp_localize_script('nathalie-mota-mobile-menu-script', 'variables', array(
         'themeUrl' => get_stylesheet_directory_uri(),
     ));
@@ -34,40 +34,15 @@ function nathalie_mota_scripts()
 
 add_action('wp_enqueue_scripts', 'nathalie_mota_scripts');
 
-register_nav_menus(array(
-    'main' => 'Menu Principal',
-    'footer' => 'Bas de page',
-));
-
-function add_text_to_footer_nav_menu($items, $args)
+function register_my_menus()
 {
-    if ($args->theme_location == 'footer') {
-        // Add your custom content here. You can use HTML to format it.
-        $custom_text = '<li class="menu-item menu-item-type-custom menu-item-object-custom">Tous droits réservés</li>';
-
-        // Append the custom text to the menu items
-        $items .= $custom_text;
-    }
-
-    return $items;
+    register_nav_menus(array(
+        'main' => 'Menu Principal',
+        'footer' => 'Bas de page',
+    ));
 }
 
-add_filter('wp_nav_menu_items', 'add_text_to_footer_nav_menu', 10, 2);
-
-function add_contact_link_to_main_nav_menu($items, $args)
-{
-    if ($args->theme_location == 'main') {
-        // Add your custom content here. You can use HTML to format it.
-        $custom_text = '<li class="menu-item menu-item-type-custom menu-item-object-custom"><a id="openModal" href="#">Contact</a></li>';
-
-        // Append the custom text to the menu items
-        $items .= $custom_text;
-    }
-
-    return $items;
-}
-
-add_filter('wp_nav_menu_items', 'add_contact_link_to_main_nav_menu', 10, 2);
+add_action('init', 'register_my_menus');
 
 // Images sizes
 // From the beginings : no resize
@@ -83,3 +58,22 @@ update_option('medium_size_w', 300);
 update_option('medium_size_h', 300);
 update_option('large_size_w', 768);
 update_option('large_size_h', 768);
+
+add_filter('timber/context', 'add_to_context');
+
+/**
+ * Global Timber context.
+ *
+ * @param array $context Global context variables.
+ */
+function add_to_context($context)
+{
+    // So here you are adding data to Timber's context object, i.e...
+    $context['foo'] = 'I am some other typical value set in your functions.php file, unrelated to the menu';
+
+    // Now, in similar fashion, you add a Timber Menu and send it along to the context.
+    $context['main_menu'] = Timber::get_menu('main');
+    $context['footer_menu'] = Timber::get_menu('footer');
+
+    return $context;
+}
