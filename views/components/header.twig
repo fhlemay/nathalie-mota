@@ -1,3 +1,11 @@
-<header>
-<p class="text-red-950">Header</p>
+<header class="relative md:static bg-white">
+    <div class="mx-auto w-3/4 md:w-4/5 flex justify-between items-center h-20">
+      <a class="logo" href="{{ site.url }}">
+        <img src="{{ theme.link }}/assets/img/logo.svg" alt="Logo">
+      </a>
+        <!-- <img id="toggle-menu" src="<?php echo get_template_directory_uri(); ?>/assets/img/burger.svg" alt="Burger icon"> -->
+      {% include '/components/main_menu.twig' %}
+    </div>
+    <hr class="drop-shadow-md">
+    <!-- <hr class="border-t-4 drop-shadow-lg"> -->
 </header>

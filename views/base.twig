@@ -1,19 +1,23 @@
 <!doctype html>
-{% include '/components/html-head.twig' %}
+<html>
 
-    <body class="{{ body_class }}">
+    {% include '/components/html-head.twig' %}
 
-        {{ function('wp_body_open') }}
+    <body class="{{ body_class }} max-w-[1440px] w-full mx-auto">
+            {{ function('wp_body_open') }}
 
-        {% include '/components/header.twig' %}
+            {% include '/components/header.twig' %}
 
-        <main>
-            {% block content %}
-                Sorry, no content
-            {% endblock %}
-        </main>
+            {# Set the content width #}
+            <div class="mx-auto w-3/4 md:w-4/5">
 
-        {% include '/components/footer.twig' %}
+            <main>
+                {% block content %}
+                    Sorry, no content
+                {% endblock %}
+            </main>
 
+            {% include '/components/footer.twig' %}
+        </div>
     </body>
 </html>
