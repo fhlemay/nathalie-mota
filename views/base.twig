@@ -1,0 +1,19 @@
+<!doctype html>
+{% include '/components/html-head.twig' %}
+
+    <body class="{{ body_class }}">
+
+        {{ function('wp_body_open') }}
+
+        {% include '/components/header.twig' %}
+
+        <main>
+            {% block content %}
+                Sorry, no content
+            {% endblock %}
+        </main>
+
+        {% include '/components/footer.twig' %}
+
+    </body>
+</html>
