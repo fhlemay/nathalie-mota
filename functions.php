@@ -25,11 +25,13 @@ add_action('wp_enqueue_scripts', 'nathalie_mota_custom_styles');
 
 function nathalie_mota_scripts()
 {
+    wp_enqueue_script('alpinejs', get_stylesheet_directory_uri() . '/assets/js/alpine.min.js');
+    // wp_enqueue_script('alpinejs', 'https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js', array(), '3.0.0', true);
     // wp_enqueue_script('nathalie-mota-modal-contact-script', get_stylesheet_directory_uri() . '/assets/js/modal-contact.js');
     // wp_enqueue_script('nathalie-mota-mobile-menu-script', get_stylesheet_directory_uri() . '/assets/js/mobile-menu.js');
-    wp_localize_script('nathalie-mota-mobile-menu-script', 'variables', array(
-        'themeUrl' => get_stylesheet_directory_uri(),
-    ));
+    // wp_localize_script('nathalie-mota-mobile-menu-script', 'variables', array(
+    //     'themeUrl' => get_stylesheet_directory_uri(),
+    // ));
 }
 
 add_action('wp_enqueue_scripts', 'nathalie_mota_scripts');
