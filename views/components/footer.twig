@@ -1,20 +1,18 @@
 <footer class="">
-<nav class="border-t border-t-black">
-    <ul
-        class="
+    <nav class="border-t border-t-black">
+        {% include '/components/modal-contact.twig' %}
+        <ul class="
         flex flex-col items-center justify-center gap-6 uppercase font-spacemono text-base py-11
         md:flex-row md:gap-16 md:h-10 md:py-0
         ">
 
-        {% for item in footer_menu.items %}
+            {% for item in footer_menu.items %}
             <li class="nav-footer-item {{ item.classes|join(' ') }}">
-                <a
-                    class="hover:font-bold" href="{{ item.link }}"
-                    {{ item.is_target_blank ? 'target="_blank"' }}
-                >{{ item.title }}</a>
+                <a class="hover:font-bold" href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>{{
+                    item.title }}</a>
             </li>
-        {% endfor %}
-        <li><a class="hover:font-bold" href="#">Tous droits réservés</a></li>
-    </ul>
-</nav>
+            {% endfor %}
+            <li><a class="hover:font-bold" href="#">Tous droits réservés</a></li>
+        </ul>
+    </nav>
 </footer>
