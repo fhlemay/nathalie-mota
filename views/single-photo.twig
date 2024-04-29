@@ -4,10 +4,12 @@
 
 <div class="w-[70%] md:w-[1148px] mx-auto">
     <div class="single-photo-container mx-auto relative grid grid-cols-1 md:grid-cols-2 gap-5 border-b border-black">
+
         <section class="single-photo-image order-1 md:order-2">
             <!-- <img src="{{ post.thumbnail.src|resize(1200, 300) }}"> -->
             <img src="{{ post.thumbnail.src }}">
         </section>
+
         <section
             class="single-photo-meta order-2 md:order-1 font-spacemono font-regular text-sm tracking-widest uppercase space-y-4 border-b border-black flex flex-col justify-end items-start pb-9">
             <h1 class="text-5xl italic tracking-normal">{{ post.title }}</h1>
@@ -25,6 +27,7 @@
             <p>Type : {{ post.meta('type') }}</p>
             <p>Année : {{ post.date('Y') }} </p>
         </section>
+
         <section
             class="single-contact-button order-3 font-poppins flex flex-col md:flex-row justify-between items-center">
             <p class="font-light text-sm md:flex-1">Cette photo vous intéresse ?</p>
@@ -32,10 +35,14 @@
                 Contact
             </button>
         </section>
+
         <section class="single-photo-nav hidden order-4 md:block">
             <p>Photos navigation</p>
         </section>
     </div>
+    <section class="p-8">
+
+    </section>
 </div>
 
 {% endblock %}
