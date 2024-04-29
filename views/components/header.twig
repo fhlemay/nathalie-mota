@@ -1,9 +1,27 @@
 <header class="relative md:static shadow-mota">
     <div class="mx-auto w-3/4 md:w-4/5 flex justify-between items-center h-20">
-      <a class="logo" href="{{ site.url }}">
-        <img src="{{ theme.link }}/assets/img/logo.svg" alt="Logo" class="w-32 md:w-auto">
-      </a>
-      <img id="toggle-menu" class="md:hidden" src="{{ theme.link }}/assets/img/burger.svg" alt="Burger icon">
-      {% include '/components/main_menu.twig' %}
+        <a class="logo" href="{{ site.url }}">
+            <img src="{{ theme.link }}/assets/img/logo.svg" alt="Logo" class="w-32 md:w-auto">
+        </a>
+        <img id="toggle-menu" class="md:hidden" src="{{ theme.link }}/assets/img/burger.svg" alt="Burger icon">
+
+        <!-- Mobile nav -->
+        <nav class="z-50 absolute top-full left-0 h-[calc(100vh-80px)] w-full">
+            <ul class="
+                flex flex-col items-center justify-center gap-7 h-full bg-red text-white bg-mota-red uppercase font-spacemono text-4xl
+                ">
+                {% include '/components/main_menu_items.twig' %}
+            </ul>
+        </nav>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:block md:static md:h-auto md:w-auto">
+            <ul class="
+                md:flex md:uppercase md:font-spacemono md:flex-row md:gap-11 md:text-black md:bg-white md:text-base
+                ">
+
+                {% include '/components/main_menu_items.twig' %}
+            </ul>
+        </nav>
     </div>
 </header>

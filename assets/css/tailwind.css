@@ -570,6 +570,30 @@ video {
   top: 100% !important;
 }
 
+.z-50 {
+  z-index: 50 !important;
+}
+
+.order-1 {
+  order: 1 !important;
+}
+
+.order-2 {
+  order: 2 !important;
+}
+
+.order-3 {
+  order: 3 !important;
+}
+
+.order-4 {
+  order: 4 !important;
+}
+
+.order-last {
+  order: 9999 !important;
+}
+
 .mx-auto {
   margin-left: auto !important;
   margin-right: auto !important;
@@ -583,8 +607,16 @@ video {
   display: flex !important;
 }
 
+.grid {
+  display: grid !important;
+}
+
 .hidden {
   display: none !important;
+}
+
+.h-12 {
+  height: 3rem !important;
 }
 
 .h-20 {
@@ -607,6 +639,10 @@ video {
   width: 8rem !important;
 }
 
+.w-\[70\%\] {
+  width: 70% !important;
+}
+
 .w-full {
   width: 100% !important;
 }
@@ -615,12 +651,28 @@ video {
   max-width: 1440px !important;
 }
 
+.resize {
+  resize: both !important;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
 .flex-col {
   flex-direction: column !important;
 }
 
+.items-start {
+  align-items: flex-start !important;
+}
+
 .items-center {
   align-items: center !important;
+}
+
+.justify-end {
+  justify-content: flex-end !important;
 }
 
 .justify-center {
@@ -631,6 +683,10 @@ video {
   justify-content: space-between !important;
 }
 
+.gap-5 {
+  gap: 1.25rem !important;
+}
+
 .gap-6 {
   gap: 1.5rem !important;
 }
@@ -639,13 +695,37 @@ video {
   gap: 1.75rem !important;
 }
 
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0 !important;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse)) !important;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem !important;
+}
+
+.border-b {
+  border-bottom-width: 1px !important;
+}
+
 .border-t {
   border-top-width: 1px !important;
+}
+
+.border-black {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity)) !important;
 }
 
 .border-t-black {
   --tw-border-opacity: 1 !important;
   border-top-color: rgb(0 0 0 / var(--tw-border-opacity)) !important;
+}
+
+.bg-gray-300 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity)) !important;
 }
 
 .bg-mota-red {
@@ -658,6 +738,14 @@ video {
   padding-bottom: 2.75rem !important;
 }
 
+.pb-9 {
+  padding-bottom: 2.25rem !important;
+}
+
+.font-poppins {
+  font-family: Poppins, serif !important;
+}
+
 .font-spacemono {
   font-family: Space Mono, sans-serif !important;
 }
@@ -667,13 +755,43 @@ video {
   line-height: 2.5rem !important;
 }
 
+.text-5xl {
+  font-size: 3rem !important;
+  line-height: 1 !important;
+}
+
 .text-base {
   font-size: 1rem !important;
   line-height: 1.5rem !important;
 }
 
+.text-sm {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+.font-light {
+  font-weight: 300 !important;
+}
+
+.font-regular {
+  font-weight: 400 !important;
+}
+
 .uppercase {
   text-transform: uppercase !important;
+}
+
+.italic {
+  font-style: italic !important;
+}
+
+.tracking-normal {
+  letter-spacing: 0em !important;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em !important;
 }
 
 .text-red-950 {
@@ -701,8 +819,20 @@ video {
     position: static !important;
   }
 
+  .md\:order-1 {
+    order: 1 !important;
+  }
+
+  .md\:order-2 {
+    order: 2 !important;
+  }
+
   .md\:block {
     display: block !important;
+  }
+
+  .md\:flex {
+    display: flex !important;
   }
 
   .md\:hidden {
@@ -721,8 +851,24 @@ video {
     width: 80% !important;
   }
 
+  .md\:w-64 {
+    width: 16rem !important;
+  }
+
+  .md\:w-\[1148px\] {
+    width: 1148px !important;
+  }
+
   .md\:w-auto {
     width: auto !important;
+  }
+
+  .md\:flex-1 {
+    flex: 1 1 0% !important;
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .md\:flex-row {
@@ -747,9 +893,17 @@ video {
     padding-bottom: 0px !important;
   }
 
+  .md\:font-spacemono {
+    font-family: Space Mono, sans-serif !important;
+  }
+
   .md\:text-base {
     font-size: 1rem !important;
     line-height: 1.5rem !important;
+  }
+
+  .md\:uppercase {
+    text-transform: uppercase !important;
   }
 
   .md\:text-black {
