@@ -13,6 +13,9 @@
 
         <!-- Mobile nav -->
         <nav x-show="mobileNavOpened" @click="mobileNavOpened = !mobileNavOpened"
+            x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 "
+            x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-500"
+            x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
             class="mobile-nav z-50 absolute top-full left-0 h-[calc(100vh-80px)] w-full">
             <ul
                 class="mobile-nav-list flex flex-col items-center justify-center gap-7 h-full bg-red text-white bg-mota-red uppercase font-spacemono text-4xl">
