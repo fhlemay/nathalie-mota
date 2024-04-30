@@ -1,6 +1,4 @@
-<footer class="">
-
-    {% include '/components/modal-contact.twig' %}
+<footer>
 
     <nav class="border-t border-t-black">
         <ul class="
@@ -14,7 +12,13 @@
                     item.title }}</a>
             </li>
             {% endfor %}
+
             <li><a class="hover:font-bold" href="#">Tous droits réservés</a></li>
+
         </ul>
     </nav>
+
+    {# Insert modal #}
+    {% include '/components/modal-contact.twig' %}
+
 </footer>

@@ -1,12 +1,18 @@
+<!-- Contact modal -->
 <div x-show="contactModalOpened" @click.outside="contactModalOpened = false"
-    class="modal fixed z-10 left-0 top-0 w-full h-full pointer-events-none transition-opacity">
+    class="modal fixed z-10 left-0 top-8 w-full h-full pointer-events-none transition-opacity">
     <!-- Modal content -->
-    <div class="modal-content overflow-hidden h-[583px] w-[286px] border-4 border-black bg-white my-2 mx-auto flex flex-col items-center
-        md:h-[769px] md:w-[597px]">
-        <img class="h-[55px] mt-2 mb-4 md:mt-3 md:mb-10 md:h-auto"
+    <div class="modal-content
+                overflow-hidden h-[583px] w-[286px] border-4 border-black bg-white my-2 mx-auto flex flex-col items-center
+                md:h-[769px] md:w-[597px]
+                ">
+
+        <img class="h-[55px] mt-2 mb-4 max-w-none md:mt-3 md:mb-10 md:h-[106px]"
             src="{{ theme.link }}/assets/img/contact-header-desktop.svg" alt="Contact">
+
         {% apply shortcodes %}
         [contact-form-7 id="6ade87d" title="contact"]
         {% endapply %}
+
     </div>
 </div>
