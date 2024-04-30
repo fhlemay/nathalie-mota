@@ -52,17 +52,17 @@
             <!-- Prev/next photo thumnail -->
             <div class="w-20 h-20 overflow-hidden relative">
                 {#{TODO : Put the right image as per which nav arrow is hovered.}#}
-                <img src="{{ next_post.thumbnail.src }}"
+                <img src="{{ post.next.thumbnail.src }}"
                     class="absolute bottom-0 left-0 min-w-full min-h-full object-cover">
             </div>
             <!-- Prev/next photo navigation arrows -->
             <div class="flex flex-row w-full justify-between">
                 {#{TODO : Must check if first. No prev arrow if it is the case. }#}
-                <a href="{{ prev_post.link }}">
+                <a href="{{ post.prev.link }}">
                     <img src="{{ theme.link }}/assets/img/previous.svg" alt="previous" class="">
                 </a>
                 {#{TODO : Must check if last. No next arrow if it is the case. }#}
-                <a href="{{ next_post.link }}">
+                <a href="{{ post.next.link }}">
                     <img src="{{ theme.link }}/assets/img/next.svg" alt="next" class="">
                 </a>
             </div>
