@@ -3,8 +3,15 @@ module.exports = {
   important: true,
   // content: ["./**/*.php"],
   // content: ["./single-photo.php"],
-  content: ["./views/*.twig", "./views/components/*.twig"], // Where are the templates
+  content: [
+    "./views/**/*.twig", // Where are the templates (views)
+    "./assets/css/*.css", // Using the @apply directive (maybe)
+  ],
   theme: {
+    screens: {
+      // There is only 1 responsive breakpoint in the project
+      md: "376px",
+    },
     extend: {
       fontFamily: {
         spacemono: ["Space Mono", "sans-serif"],
