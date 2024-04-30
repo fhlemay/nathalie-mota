@@ -51,12 +51,20 @@
         <div class="w-max flex flex-col gap-2 absolute right-0 -top-3">
             <!-- Prev/next photo thumnail -->
             <div class="w-20 h-20 overflow-hidden relative">
-                <img src="{{ post.thumbnail.src }}" class="absolute bottom-0 left-0 min-w-full min-h-full object-cover">
+                {#{TODO : Put the right image as per which nav arrow is hovered.}#}
+                <img src="{{ next_post.thumbnail.src }}"
+                    class="absolute bottom-0 left-0 min-w-full min-h-full object-cover">
             </div>
             <!-- Prev/next photo navigation arrows -->
             <div class="flex flex-row w-full justify-between">
-                <img src="{{ theme.link }}/assets/img/previous.svg" alt="previous" class="">
-                <img src="{{ theme.link }}/assets/img/next.svg" alt="next" class="">
+                {#{TODO : Must check if first. No prev arrow if it is the case. }#}
+                <a href="{{ prev_post.link }}">
+                    <img src="{{ theme.link }}/assets/img/previous.svg" alt="previous" class="">
+                </a>
+                {#{TODO : Must check if last. No next arrow if it is the case. }#}
+                <a href="{{ next_post.link }}">
+                    <img src="{{ theme.link }}/assets/img/next.svg" alt="next" class="">
+                </a>
             </div>
         </div>
     </section>
