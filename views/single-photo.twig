@@ -2,47 +2,69 @@
 
 {% block content %}
 
-<div class="w-[70%] md:w-[1148px] mx-auto">
-    <div class="single-photo-container mx-auto relative grid grid-cols-1 md:grid-cols-2 gap-5 border-b border-black">
+<!-- Single photo container -->
+<div class="relative grid grid-cols-1 gap-5 mt-5 
+            md:grid-cols-2 md:mt-9 md:border-b md:border-black">
 
-        <section class="single-photo-image order-1 md:order-2">
-            <!-- <img src="{{ post.thumbnail.src|resize(1200, 300) }}"> -->
-            <img src="{{ post.thumbnail.src }}">
-        </section>
-
-        <section
-            class="single-photo-meta order-2 md:order-1 font-spacemono font-regular text-sm tracking-widest uppercase space-y-4 border-b border-black flex flex-col justify-end items-start pb-9">
-            <h1 class="text-5xl italic tracking-normal">{{ post.title }}</h1>
-            <p>Référence : {{ post.meta('reference') }}</p>
-            <p>Catégorie :
-                {% for term in post.terms('categorie') %}
-                {{ term }}
-                {% endfor%}
-            </p>
-            <p>Format :
-                {% for term in post.terms('format') %}
-                {{ term }}
-                {% endfor%}
-            </p>
-            <p>Type : {{ post.meta('type') }}</p>
-            <p>Année : {{ post.date('Y') }} </p>
-        </section>
-
-        <section
-            class="single-contact-button order-3 font-poppins flex flex-col md:flex-row justify-between items-center">
-            <p class="font-light text-sm md:flex-1">Cette photo vous intéresse ?</p>
-            <button type="button" class="font-spacemono font-regular w-full md:w-64 bg-gray-300 rounded-sm h-12">
-                Contact
-            </button>
-        </section>
-
-        <section class="single-photo-nav hidden order-4 md:block">
-            <p>Photos navigation</p>
-        </section>
-    </div>
-    <section class="p-8">
-
+    <!-- Photo -->
+    <section class="single-photo-image order-1 md:order-2">
+        <!-- <img src="{{ post.thumbnail.src|resize(1200, 300) }}"> -->
+        <img src="{{ post.thumbnail.src }}">
     </section>
+
+    <!-- Photo's meta-data -->
+    <section class="order-2 font-spacemono font-regular text-sm tracking-widest uppercase flex flex-col gap-4 justify-end items-start md:pb-9
+                   md:order-1  md:border-b md:border-black">
+        <h1 class="text-5xl italic tracking-normal w-28 [word-break: keep-all] [white-space: normal]">
+            {{ post.title}}
+        </h1>
+        <p>Référence : {{ post.meta('reference') }}</p>
+        <p>Catégorie :
+            {% for term in post.terms('categorie') %}
+            {{ term }}
+            {% endfor%}
+        </p>
+        <p>Format :
+            {% for term in post.terms('format') %}
+            {{ term }}
+            {% endfor%}
+        </p>
+        <p>Type : {{ post.meta('type') }}</p>
+        <p>Année : {{ post.date('Y') }} </p>
+    </section>
+
+    <!-- Contact button with photo's reference -->
+    <section class="order-3 font-poppins flex flex-col justify-between items-start gap-4 mt-2 mb-6
+                        md:flex-row md:mt-4 md:mb-8 md:items-center">
+
+        <hr class="relative w-lvw -left-[16.5%] border-black md:hidden">
+
+        <p class="font-light text-sm md:flex-1">Cette photo vous intéresse ?</p>
+        <button type="button" class="font-spacemono font-regular w-full bg-gray-300 rounded-sm h-12 md:w-64">
+            Contact
+        </button>
+
+        <hr class="relative w-lvw -left-[16.5%] border-black md:hidden">
+    </section>
+    <!-- Photos navigation -->
+    <section class="hidden order-4 md:block relative">
+        <div class="w-max flex flex-col gap-2 absolute right-0 -top-3">
+            <!-- Prev/next photo thumnail -->
+            <div class="w-20 h-20 overflow-hidden relative">
+                <img src="{{ post.thumbnail.src }}" class="absolute bottom-0 left-0 min-w-full min-h-full object-cover">
+            </div>
+            <!-- Prev/next photo navigation arrows -->
+            <div class="flex flex-row w-full justify-between">
+                <img src="{{ theme.link }}/assets/img/previous.svg" alt="previous" class="">
+                <img src="{{ theme.link }}/assets/img/next.svg" alt="next" class="">
+            </div>
+        </div>
+    </section>
+
 </div>
+<!-- Recommanded photos -->
+<section class="p-8">
+    <p>Vous aimeriez aussi...</p>
+</section>
 
 {% endblock %}
