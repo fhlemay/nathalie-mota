@@ -1,0 +1,23 @@
+{# TODO : add smooth transitions #}
+<div class="relative">
+    <div x-data="{ hoverThumbnailSrc: '' }" class="w-max flex flex-col gap-2 absolute right-0 -top-3">
+        <!-- Prev/next photo thumbnail -->
+        <div class="w-20 h-20 overflow-hidden relative">
+            <img x-show="hoverThumbnailSrc" :src="hoverThumbnailSrc"
+                class="absolute bottom-0 left-0 min-w-full min-h-full object-cover border-none">
+        </div>
+        <!-- Prev/next photo navigation arrows -->
+        <div class="flex flex-row w-full justify-end gap-7">
+            <a x-show="{{ post.prev ? 'true' : 'false' }}"
+                @mouseenter="hoverThumbnailSrc = '{{ post.prev.thumbnail.src }}'" @mouseleave="hoverThumbnailSrc = ''"
+                href="{{ post.prev.link }}">
+                <img src="{{ theme.link }}/assets/img/previous.svg" alt="previous" class="">
+            </a>
+            <a x-show="{{ post.next ? 'true' : 'false' }}"
+                @mouseenter="hoverThumbnailSrc = '{{ post.next.thumbnail.src }}'" @mouseleave="hoverThumbnailSrc = ''"
+                href="{{ post.next.link }}">
+                <img src="{{ theme.link }}/assets/img/next.svg" alt="next" class="">
+            </a>
+        </div>
+    </div>
+</div>
