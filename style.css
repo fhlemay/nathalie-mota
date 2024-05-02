@@ -6,3 +6,8 @@ Description: Thème pour le site de la photographe Nathalie Mota
 Version: 1.0
 Text Domain: nathalie-mota
 */
+
+/* Alpine.js mysteries */
+[x-cloak] {
+  display: none !important;
+}
