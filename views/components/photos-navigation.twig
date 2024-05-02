@@ -8,15 +8,15 @@
         </div>
         <!-- Prev/next photo navigation arrows -->
         <div class="flex flex-row w-full justify-end gap-7">
-            <a x-show="{{ post.prev ? 'true' : 'false' }}"
-                @mouseenter="hoverThumbnailSrc = '{{ post.prev.thumbnail.src }}'" @mouseleave="hoverThumbnailSrc = ''"
-                href="{{ post.prev.link }}">
-                <img src="{{ theme.link }}/assets/img/previous.svg" alt="previous" class="">
+            <a @mouseenter="hoverThumbnailSrc = '{{ post.prev.thumbnail.src }}'" @mouseleave="hoverThumbnailSrc = ''"
+                href="{{ post.prev.link }}" class="flex-1">
+                <img x-show="{{ post.prev ? 'true' : 'false' }} " src="{{ theme.link }}/assets/img/previous.svg"
+                    alt="previous" class="">
             </a>
-            <a x-show="{{ post.next ? 'true' : 'false' }}"
-                @mouseenter="hoverThumbnailSrc = '{{ post.next.thumbnail.src }}'" @mouseleave="hoverThumbnailSrc = ''"
-                href="{{ post.next.link }}">
-                <img src="{{ theme.link }}/assets/img/next.svg" alt="next" class="">
+            <a @mouseenter="hoverThumbnailSrc = '{{ post.next.thumbnail.src }}'" @mouseleave="hoverThumbnailSrc = ''"
+                href="{{ post.next.link }}" class="flex-1">
+                <img x-show="{{ post.next ? 'true' : 'false' }} " src="{{ theme.link }}/assets/img/next.svg" alt="next"
+                    class="">
             </a>
         </div>
     </div>
