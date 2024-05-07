@@ -3,14 +3,14 @@
 {% block content %}
 
 <!-- Photo block -->
-<div class="relative flex flex-col gap-5 md:mt-9 md:flex-row 
-                md:h-[calc(100vh-80px-118px-36px)]">
+<div class="relative flex flex-col gap-5
+            md:mt-9 md:flex-row md:h-[calc(100vh-80px-118px-36px-34px)]">
 
     <!-- Photo (image) -->
-    <section class="md:flex-1 relative">
+    <section class="md:flex-1 flex flex-col justify-end items-end">
         {# TODO : fix image size (create an wp image size for it) #}
         {# TODO : add appropriated attibutes #}
-        <img src="{{ post.thumbnail.src }}" class="max-h-full max-w-full md:absolute md:bottom-0 md:right-0">
+        <img src="{{ post.thumbnail.src }}" class="max-h-full max-w-full object-contain">
     </section>
 
     <!-- Photo's metadata -->
@@ -26,20 +26,11 @@
 <div class="flex gap-5 items-center md:h-[118px] md:border-b md:border-black">
 
     <!-- Contact button with photo's reference -->
-    <section class="font-poppins flex flex-col justify-between items-start gap-4 mt-2 mb-6
-                        md:flex-1 md:flex-row md:mt-6 md:mb-6 md:items-center">
+    <section class="md:flex-1 md:mt-6 md:mb-6 ">
 
         <!-- <hr class="relative w-lvw -left-[12.5%] border-black md:hidden"> -->
 
-        <p class="font-light text-sm md:flex-1">Cette photo vous intéresse ?</p>
-        <button type="button" 
-                @click="
-                    contactModalOpened = true;
-                    $nextTick(() => document.getElementById('ref-photo').value = '{{ post.meta('reference') }}')"
-                class="font-spacemono font-regular w-[263px] bg-gray-300 rounded-sm h-12 md:w-64">
-
-            Contact
-        </button>
+        {% include '/components/photo-contact-button.twig' %}
 
         <!-- <hr class="relative w-lvw -left-[12.5%] border-black md:hidden"> -->
     </section>
@@ -47,7 +38,7 @@
     <!-- Photos navigation -->
     <section class="flex-1 hidden md:block ">
 
-        {% include '/components/photos-navigation.twig' %}
+        {% include '/components/photo-navigation.twig' %}
 
     </section>
 

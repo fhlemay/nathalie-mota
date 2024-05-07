@@ -1,0 +1,11 @@
+<div class="font-poppins flex flex-col justify-between items-start gap-4 md:flex-row md:items-center">
+    <p class="font-light text-sm md:flex-1">Cette photo vous intéresse ?</p>
+    <button type="button" @click="
+                    contactModalOpened = true;
+                    $nextTick(() => document.getElementById('ref-photo').value = '{{ post.meta('reference') }}')"
+        class="font-spacemono font-regular w-[263px] bg-gray-300 rounded-sm h-12 md:w-64">
+
+        Contact
+
+    </button>
+</div>
