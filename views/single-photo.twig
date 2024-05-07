@@ -45,7 +45,12 @@
         <!-- <hr class="relative w-lvw -left-[12.5%] border-black md:hidden"> -->
 
         <p class="font-light text-sm md:flex-1">Cette photo vous intéresse ?</p>
-        <button type="button" class="font-spacemono font-regular w-[263px] bg-gray-300 rounded-sm h-12 md:w-64">
+        <button type="button" 
+                @click="
+                    contactModalOpened = true;
+                    $nextTick(() => document.getElementById('ref-photo').value = '{{ post.meta('reference') }}')"
+                class="font-spacemono font-regular w-[263px] bg-gray-300 rounded-sm h-12 md:w-64">
+
             Contact
         </button>
 

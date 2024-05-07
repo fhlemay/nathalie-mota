@@ -1,8 +1,12 @@
 <!-- Contact modal -->
-<div x-cloak x-show="contactModalOpened" @click.outside="contactModalOpened = false"
-    class="modal fixed z-10 left-0 top-8 w-full h-full pointer-events-none transition-opacity">
+<div x-cloak
+     x-show="contactModalOpened" 
+     class="fixed z-10 left-0 top-8 w-full h-full transition-opacity">
+
     <!-- Modal content -->
-    <div class="modal-content
+    <div 
+            @click.outside="contactModalOpened = false"
+            class="modal-content
                 overflow-hidden h-[583px] w-[286px] border-4 border-black bg-white my-2 mx-auto flex flex-col items-center
                 md:h-[769px] md:w-[597px]
                 ">
