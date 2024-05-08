@@ -9,7 +9,7 @@
     <!-- Photo (image) -->
     <section class="mx-auto w-3/4 md:flex-1 flex flex-col justify-end items-end">
 
-        {{ include( '/components/photo-image.twig', {photo: post} ) }}
+        {{ include( '/components/photo-image.twig', {'photo': post} ) }}
 
     </section>
 
@@ -17,7 +17,7 @@
     <section class="mx-auto w-3/4 md:flex-1 md:pb-9 flex flex-col justify-end
                    md:order-first md:border-b md:border-black">
 
-        {{ include( '/components/photo-metadata.twig', {photo: post} ) }}
+        {{ include( '/components/photo-metadata.twig', {'photo': post} ) }}
 
     </section>
 </div>
@@ -28,14 +28,14 @@
     <!-- Contact button with photo's reference -->
     <section class="mx-auto w-3/4 mt-6 mb-6 md:flex-1">
 
-        {{ include( '/components/photo-contact-button.twig', {photo: post} ) }}
+        {{ include( '/components/photo-contact-button.twig', {'photo': post} ) }}
 
     </section>
 
     <!-- Photos navigation -->
     <section class="mx-auto w-3/4 flex-1 hidden md:block ">
 
-        {{ include( '/components/photo-navigation.twig', {photo: post} ) }}
+        {{ include( '/components/photo-navigation.twig', {'photo': post} ) }}
 
     </section>
 
