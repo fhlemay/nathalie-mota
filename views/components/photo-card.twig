@@ -1,24 +1,38 @@
 <!-- Photo Container -->
 <div class="relative aspect-square w-full md:w-1/2 overflow-hidden group"
-    x-data="{ overlay: false, showLightbox: false }">
+    x-data="{ overlay: false, showLightbox: false, showMetaData: false }">
 
     <!-- Photo -->
-    <img src="{{ post.thumbnail.src }}" alt="" class="w-full h-full object-cover">
+    <img src="{{ photo.thumbnail.src }}" alt="" class="w-full h-full object-cover">
 
     <!-- Overlay -->
-    <div x-show="overlay" @mouseenter="overlay = true; console.log('Lightbox state:', showLightbox)"
-        @mouseleave="overlay = false"
+    <div x-show="overlay" @mouseenter="overlay = true" @mouseleave="overlay = false"
         class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center gap-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
 
         <!-- Eye Icon -->
-        <button @click="showLightbox = true" title="More Info">
-            <img src="{{ theme.link }}/assets/img/Icon_eye.svg" alt="Eye Icon" class="w-8 h-8">
-        </button>
+        <div class="absolute inset-0 w-full flex items-center justify-center">
+            <button @mouseenter="showMetaData = true" @mouseleave="showMetaData = false" title="More Info">
+                <img src="{{ theme.link }}/assets/img/Icon_eye.svg" alt="Eye Icon" class="w-11 h-auto">
+            </button>
+        </div>
 
         <!-- Full-Screen Icon -->
-        <button @click="showLightbox = true" title="Open in Lightbox">
-            <img src="{{ theme.link }}/assets/img/Icon_fullscreen.svg" alt="Full-Screen Icon" class="w-8 h-8">
+        <button @click="showLightbox = true" title="Open in Lightbox" class="absolute top-3 right-5">
+            <img src="{{ theme.link }}/assets/img/Icon_fullscreen.svg" alt="Full-Screen Icon" class="w-9 h-auto">
         </button>
+
+        <!-- Reference -->
+        <div x-show="showMetaData" class="absolute bottom-3 left-4 text-white font-poppins text-sm uppercase">
+            {{ photo.meta('reference') }}
+        </div>
+
+        <!-- Category -->
+        <div x-show="showMetaData" class="absolute bottom-3 right-6 text-white font-poppins text-sm uppercase">
+            {% for term in photo.terms('categorie') %}
+            {{ term }}
+            {% endfor%}
+        </div>
+
     </div>
 
     <!-- Lightbox -->

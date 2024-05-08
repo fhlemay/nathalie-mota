@@ -45,7 +45,7 @@
 <section class="pt-6 flex flex-col items-center md:items-start">
     <h2 class="font-spacemono font-regular text-lg uppercase tracking-normal">Vous aimeriez aussi</h2>
 
-    {% include '/components/photo-card.twig' %}
+    {{ include( '/components/photo-card.twig', {photo: post} ) }}
 
 </section>
 
