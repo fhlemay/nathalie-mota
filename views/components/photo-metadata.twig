@@ -1,18 +1,18 @@
 <div class="font-spacemono font-regular text-sm tracking-widest uppercase flex flex-col gap-5">
     <h1 class="text-5xl italic tracking-normal w-28 [word-break: keep-all] [white-space: normal]">
-        {{ post.title}}
+        {{ photo.title}}
     </h1>
-    <p>Référence : {{ post.meta('reference') }}</p>
+    <p>Référence : {{ photo.meta('reference') }}</p>
     <p>Catégorie :
-        {% for term in post.terms('categorie') %}
+        {% for term in photo.terms('categorie') %}
         {{ term }}
         {% endfor%}
     </p>
     <p>Format :
-        {% for term in post.terms('format') %}
+        {% for term in photo.terms('format') %}
         {{ term }}
         {% endfor%}
     </p>
-    <p>Type : {{ post.meta('type') }}</p>
-    <p>Année : {{ post.date('Y') }} </p>
+    <p>Type : {{ photo.meta('type') }}</p>
+    <p>Année : {{ photo.date('Y') }} </p>
 </div>
