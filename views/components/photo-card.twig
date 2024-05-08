@@ -11,9 +11,9 @@
 
         <!-- Eye Icon -->
         <div class="absolute inset-0 w-full flex items-center justify-center">
-            <button @mouseenter="showMetaData = true" @mouseleave="showMetaData = false" title="More Info">
+            <a href="{{ photo.link }}">
                 <img src="{{ theme.link }}/assets/img/Icon_eye.svg" alt="Eye Icon" class="w-11 h-auto">
-            </button>
+            </a>
         </div>
 
         <!-- Full-Screen Icon -->
@@ -22,12 +22,12 @@
         </button>
 
         <!-- Reference -->
-        <div x-show="showMetaData" class="absolute bottom-3 left-4 text-white font-poppins text-sm uppercase">
+        <div class="absolute bottom-3 left-4 text-white font-poppins text-sm uppercase">
             {{ photo.meta('reference') }}
         </div>
 
         <!-- Category -->
-        <div x-show="showMetaData" class="absolute bottom-3 right-6 text-white font-poppins text-sm uppercase">
+        <div class="absolute bottom-3 right-6 text-white font-poppins text-sm uppercase">
             {% for term in photo.terms('categorie') %}
             {{ term }}
             {% endfor%}
