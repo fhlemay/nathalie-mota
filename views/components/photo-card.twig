@@ -16,7 +16,9 @@
         </div>
 
         <!-- Full-Screen Icon -->
-        <button @click="showLightbox = true" title="Open in Lightbox" class="absolute top-3 right-5">
+        <button
+            @click="showLightbox = true; lightboxPhoto = {{ photo.thumbnail.src }}; lightboxPrev={{ photo.prev.thumbnail.src }}; lightboxNext={{ photo.next.thumbnail.src }}"
+            title="Open in Lightbox" class="absolute top-3 right-5">
             <img src="{{ theme.link }}/assets/img/Icon_fullscreen.svg" alt="Full-Screen Icon" class="w-9 h-auto">
         </button>
 
