@@ -1,42 +1,58 @@
-{# TODO : to complete as per Figma mockup #}
 <!-- Lightbox -->
+<div x-data="lightbox()" @open-lightbox.window="handleOpen($event)">
+    <template x-if="open" x-cloak>
 
-<div x-data="lightbox()" @open-lightbox.window="handleOpen($event)" x-show="open" x-cloak
-    class="fixed inset-0 bg-black bg-opacity-75 justify-center items-center p-4">
+        <div class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
+            <button @click="close" class="absolute top-4 right-4 z-50">
+                <img src="{{ theme.link }}/assets/img/lightbox_close.svg" alt="Close">
+            </button>
 
-    <img :src="photos[currentIndex].thumbnail_src" alt="" class="max-w-full max-h-full object-contain">
-    <button @click="close" class="absolute top-4 right-4 text-white text-4xl">✖️</button>
-    <button @click="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2">
-        &#10094; Prev
-    </button>
-    <button @click="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2">
-        Next &#10095;
-    </button>
-  
+            <div class="flex gap-16 items-center justify-center w-full max-h-full px-4">
+                <button @click="prev" class="flex items-center gap-2 text-white mr-1">
+                    <img src="{{ theme.link }}/assets/img/lightbox_previous.svg" alt="Previous">
+                    Précédente
+                </button>
+
+                <div class="flex flex-col items-center">
+                    <img :src="photos[currentIndex].thumbnail_src" alt="" class="object-contain max-h-[80vh] w-auto">
+                    <div class="flex justify-between items-center w-full mt-2">
+                        <p class="text-white uppercase font-spacemono text-sm" x-text="photos[currentIndex].reference">
+                        </p>
+                        <p class="text-white uppercase font-spacemono text-sm" x-text="photos[currentIndex].categorie">
+                        </p>
+                    </div>
+                </div>
+
+                <button @click="next" class="flex items-center gap-2 text-white ml-1">
+                    Suivante
+                    <img src="{{ theme.link }}/assets/img/lightbox_next.svg" alt="Next">
+                </button>
+            </div>
+        </div>
+    </template>
 </div>
 
 <script>
-function lightbox() {
-    return {
-        open: false, // Lightbox visibility state
-        currentIndex: 0, // Index of currently displayed image
-        photos: {{ photos|json_encode|raw }}, // Array of image objects
+    function lightbox() {
+        return {
+            open: false, // Lightbox visibility state
+            currentIndex: 0, // Index of currently displayed image
+            photos: {{photos | json_encode | raw}}, // Array of image objects
 
-        // Event handler for opening the lightbox
-        handleOpen(event) {
-            this.currentIndex = event.detail.index;
-            this.open = true;
-        },
-        close() {
-            this.open = false;
-        },
-        next() {
-            this.currentIndex = this.currentIndex < this.photos.length - 1 ? this.currentIndex + 1 : 0;
-        },
-        prev() {
-            this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.photos.length - 1;
-        },
+    // Event handler for opening the lightbox
+    handleOpen(event) {
+        this.currentIndex = event.detail.index;
+        this.open = true;
+    },
+    close() {
+        this.open = false;
+    },
+    next() {
+        this.currentIndex = this.currentIndex < this.photos.length - 1 ? this.currentIndex + 1 : 0;
+    },
+    prev() {
+        this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.photos.length - 1;
+    },
+        }
     }
-}
 </script>
-
