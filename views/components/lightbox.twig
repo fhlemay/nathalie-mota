@@ -1,7 +1,42 @@
 {# TODO : to complete as per Figma mockup #}
 <!-- Lightbox -->
-<div x-show="showLightbox" @click.outside="showLightbox = false"
+
+<div x-data="lightbox()" @open-lightbox.window="handleOpen($event)" x-show="open" x-cloak
     class="fixed inset-0 bg-black bg-opacity-75 justify-center items-center p-4">
-    <img src="" alt="Your Photo in Lightbox" class="max-w-full max-h-full object-contain">
-    <button @click="showLightbox = false" class="absolute top-4 right-4 text-white text-4xl">✖️</button>
+
+    <img :src="photos[currentIndex].thumbnail_src" alt="" class="max-w-full max-h-full object-contain">
+    <button @click="close" class="absolute top-4 right-4 text-white text-4xl">✖️</button>
+    <button @click="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2">
+        &#10094; Prev
+    </button>
+    <button @click="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2">
+        Next &#10095;
+    </button>
+  
 </div>
+
+<script>
+function lightbox() {
+    return {
+        open: false, // Lightbox visibility state
+        currentIndex: 0, // Index of currently displayed image
+        photos: {{ photos|json_encode|raw }}, // Array of image objects
+
+        // Event handler for opening the lightbox
+        handleOpen(event) {
+            this.currentIndex = event.detail.index;
+            this.open = true;
+        },
+        close() {
+            this.open = false;
+        },
+        next() {
+            this.currentIndex = this.currentIndex < this.photos.length - 1 ? this.currentIndex + 1 : 0;
+        },
+        prev() {
+            this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.photos.length - 1;
+        },
+    }
+}
+</script>
+
