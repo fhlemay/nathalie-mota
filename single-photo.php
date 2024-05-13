@@ -4,44 +4,65 @@ use Timber\Timber;
 
 $current_template = pathinfo(__FILE__, PATHINFO_FILENAME) . '.twig';
 
-// Timber's shenanigans
 $context = Timber::context();
 
-// Get the terms of the current post in the 'categorie' taxonomy
+// Recommanded photos share the same categorie as the current photo.
+// Get the terms of the current photo in the 'categorie' taxonomy.
 $current_terms = wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'ids'));
 
-// Ensure there are terms associated with the current post
 if (!empty($current_terms)) {
     // Prepare the arguments for the WP_Query
     $args = array(
-        'post_type' => 'photo',  // Your custom post type
-        'posts_per_page' => 2,  // Number of posts to retrieve
+        'post_type' => 'photo',  // custom post type
+        'posts_per_page' => 2,  // retrieve 2 posts for the recommanded photos
         'orderby' => 'rand',  // Order posts randomly
         'tax_query' => array(
-            array(
-                'taxonomy' => 'categorie',  // The taxonomy to query
-                'field' => 'term_id',  // Use term IDs for filtering
-                'terms' => $current_terms,  // Pass the obtained term IDs
-            ),
+                array(
+                    'taxonomy' => 'categorie',  // the taxonomy to query
+                    'field' => 'term_id',  // use term IDs for filtering
+                    'terms' => $current_terms,  // Pass the obtained term IDs
+                ),
         ),
     );
 
     // Run the WP_Query
     $related_posts_query = new WP_Query($args);
 
-    // Check if posts were found
+    // The custom data attached to each recommanded photo that will send to the template engine
+    $data = [];
+
     if ($related_posts_query->have_posts()) {
-        // Convert the results to Timber posts
-        $related_posts = Timber::get_posts($related_posts_query);
+        while($related_posts_query->have_posts()) {
+            
+            $related_posts_query->the_post();
 
-        $context['related_posts'] = $related_posts;
+            $post_id = get_the_ID();
+            $permalink = get_permalink($post_id);
+            $thumbnail_url = get_the_post_thumbnail_url($post_id);
+            $meta_reference = get_post_meta($post_id, 'reference', true);
+            $terms_categorie = wp_get_post_terms($post_id, 'categorie', ['fields' => 'names']); // Get categories as names
+            // $title = get_the_title();
+            // $meta_type = get_post_meta($post_id, 'type', true);
+            // $terms_format = wp_get_post_terms($post_id, 'format', ['fields' => 'names']); // Get formats as names
+            // $date_year = get_the_date('Y');
 
-        // Reset post data after the custom loop
+            $data[] = [
+                'link' => $permalink,
+                'thumbnail_src' => $thumbnail_url ? $thumbnail_url : null,
+                'reference' => $meta_reference,
+                'categorie' => $terms_categorie,
+            ];
+        }
+
+        // Add the custom data to the related posts in the Timber's context variable
+        $context['related_posts'] = $data;
+
         wp_reset_postdata();
+
     } else {
-        // No related posts found
-        echo '<p>No related photos found.</p>';
+        echo 'No photos found.';
     }
+
 }
 
 Timber::render($current_template, $context);
