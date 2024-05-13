@@ -1,9 +1,12 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:mt-12 md:mb-28">
 
     {% for photo in photos %}
-    {{ include( '/components/photo-card.twig', {'photo': photo} ) }}
+        
+        {# loop.index0 : twig's loop variable : The current iteration of the loop. (0 indexed)#}
+        {% include '/components/photo-card.twig' with {'photo': photo, 'index': loop.index0} %}
+
     {% endfor %}
 
-    {{ include( '/components/lightbox.twig' ) }}
+    {% include '/components/lightbox.twig' with {'photos': photos} %}
 
 </div>
