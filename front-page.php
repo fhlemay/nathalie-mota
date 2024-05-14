@@ -38,4 +38,11 @@ if ($hero_post_query->have_posts()) {
     echo "No photo found";
 }
 
+$tmp_photos = Timber::get_posts([
+    'post_type' => 'photo',
+    'posts_per_page' => 8, 
+]);
+
+$context['tmp_photos'] =  $tmp_photos;
+
 Timber::render($current_template, $context);
