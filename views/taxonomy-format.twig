@@ -1,0 +1,11 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+
+<h2 class="font-spacemono font-regular text-lg uppercase tracking-normal mt-6 md:mt-20">
+    Format : {{ term.name }}
+</h2>
+
+{{ include( '/components/photo-grid.twig', {'photos': posts} ) }}
+
+{% endblock %}
