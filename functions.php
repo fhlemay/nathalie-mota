@@ -23,6 +23,7 @@ add_action('wp_enqueue_scripts', 'nathalie_mota_custom_styles');
 function nathalie_mota_scripts()
 {
     wp_enqueue_script('alpinejs', get_stylesheet_directory_uri() . '/assets/js/alpine.min.js');
+    wp_enqueue_script('htmx', get_stylesheet_directory_uri() . '/assets/js/htmx.min.js');
 }
 
 add_action('wp_enqueue_scripts', 'nathalie_mota_scripts');
