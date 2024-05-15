@@ -1,0 +1,49 @@
+<div x-data="{ open: false, selected: '{{ default_label }}', selectedValue: '' }" @click.away="open = false" class="relative">
+
+    <!-- Dropdown Trigger -->
+    <button
+        @click="open = !open"
+        class="w-64 px-[18px] py-[11px] rounded-lg bg-transparent border border-mota-mid-grey font-poppins uppercase flex justify-between items-center">
+        <span x-text="selected"></span>
+        <svg 
+            :class="{'rotate-180': open, 'rotate-0': !open}"
+            class="fill-current h-4 w-4 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+        </svg>
+    </button>
+
+    <!-- Dropdown Menu -->
+    <div
+        x-show="open"
+        x-transition:enter="transition ease-out duration-100" {# Transition created by AI, I don't want to mess with that stuff. #}
+        x-transition:enter-start="transform opacity-0 scale-95"
+        x-transition:enter-end="transform opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-75"
+        x-transition:leave-start="transform opacity-100 scale-100"
+        x-transition:leave-end="transform opacity-0 scale-95"
+        class="absolute mt-2 w-full rounded-md bg-white shadow-lg z-50">
+
+        <div class="h-5"></div> <!-- Spacer required by designer -->
+        <ul class="py-1 text-mota-dark-blue">
+            {% for item in items %}
+            <li>
+                <a href="#" 
+                    @click.prevent=" {# reset if clicked again #}
+                       if (selectedValue === '{{ item.slug }}') {
+                           selected = '{{ default_label }}';
+                           selectedValue = '';
+                       } else {
+                           selected = '{{ item.name|upper }}';
+                           selectedValue = '{{ item.slug }}';
+                       }
+                       open = false"
+                    :class="{'bg-mota-red text-white': selectedValue === '{{ item.slug}}' }"
+                    class="block px-4 py-2 text-sm leading-5 text-left cursor-pointer hover:bg-mota-light-red active:bg-mota-mid-red">
+                    {{ item.name|upper }}
+                </a>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
