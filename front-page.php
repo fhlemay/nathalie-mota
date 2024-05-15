@@ -38,6 +38,19 @@ if ($hero_post_query->have_posts()) {
     echo "No photo found";
 }
 
+// Get category taxonomy values
+$context['categories'] = get_terms([
+    'taxonomy' => 'categorie',
+    'hide_empty' => false, // Set to true if you only want categories with posts
+]);
+
+// Get format taxonomy values
+$context['formats'] = get_terms([
+    'taxonomy' => 'format',
+    'hide_empty' => false, // Set to true if you only want formats with posts
+]);
+
+
 $tmp_photos = Timber::get_posts([
     'post_type' => 'photo',
     'posts_per_page' => 8, 
