@@ -7,7 +7,7 @@ $current_template = pathinfo(__FILE__, PATHINFO_FILENAME) . '.twig';
 
 $context = Timber::context();
 
-$args = array(
+$hero_args = array(
     'post_type' => 'photo',  // custom post type
     'posts_per_page' => 1,  // retrieve only 1 post for the hero image
     'orderby' => 'rand',  // Order posts randomly
@@ -20,7 +20,7 @@ $args = array(
     ),
 );
 
-$hero_post_query = new WP_Query($args);
+$hero_post_query = new WP_Query($hero_args);
 
 if ($hero_post_query->have_posts()) {
     while ($hero_post_query->have_posts()) {
