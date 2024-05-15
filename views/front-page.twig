@@ -18,27 +18,28 @@
 
 <!-- Filter -->
 <search>
+
     <div class="flex flex-col items-center py-7 gap-2 md:justify-between md:flex-row md:pt-20 md:pb-10">
+
         <div class="flex flex-col gap-2 md:flex-row md:gap-9">
-            <select name="categories" id="categories-select"
-                class="w-64 px-[18px] py-[11px] rounded-lg bg-transparent border border-mota-mid-grey font-poppins uppercase">
-                <option disabled class="h-5"></option> {# dummy first option for whitespace #}
-                <option value="" disabled selected class="hidden">Catégories</option>
-                <option value="1" class="uppercase">Test</option>
-            </select>
-            <select name="formats" id="formats-select"
-                class="w-64 px-[18px] py-[11px] rounded-lg bg-transparent border border-mota-mid-grey font-poppins uppercase">
-                <option disabled class="h-5"></option> {# dummy first option for whitespace #}
-                <option value="" disabled selected class="hidden">Formats</option>
-            </select>
+
+            {% include '/components/filter-dropdown.twig' with {'items': categories, 'default_label': 'catégorie'} %}
+
+            {% include '/components/filter-dropdown.twig' with {'items': formats, 'default_label': 'formats'} %}
+
         </div>
-        <select name="ordre" id="ordre-select"
-            class="w-64 px-[18px] py-[11px] rounded-lg bg-transparent border border-mota-mid-grey font-poppins uppercase">
-            <option disabled class="h-5"></option> {# dummy first option for whitespace #}
-            <option value="" selected class="hidden">Trier à partir</option>
-            <option value="old" class="uppercase">des plus anciennes</option>
-            <option value="new">des plus récentes</option>
-        </select>
+
+        {% include '/components/filter-dropdown.twig' with 
+            {
+                'items': 
+                    [
+                        {'name': 'des plus anciennes', 'slug': 'old'},
+                        {'name': 'des plus récentes', 'slug': 'new'}
+                    ],
+                'default_label': 'Trier à partir'
+            }
+        %}
+
     </div>
 </search>
 
