@@ -1,5 +1,5 @@
 <!-- Photo Container -->
-<div class="relative aspect-square w-full overflow-hidden group" x-data="{ overlay: false }">
+<div class="photo-card relative aspect-square w-full overflow-hidden group" x-data="{ overlay: false }">
     <!-- Photo -->
     <img src="{{ photo.thumbnail.src }}" alt="" class="w-full h-full object-cover">
 
@@ -25,12 +25,14 @@
         </button>
 
         <!-- Reference id -->
-        <div class="absolute bottom-3 left-4 text-white font-poppins text-sm uppercase">
+        <div class="absolute bottom-3 left-4 text-white font-poppins text-sm uppercase"
+            data-reference="{{ photo.meta('reference') }}">
             {{ photo.meta('reference') }}
         </div>
 
         <!-- Category -->
-        <div class="absolute bottom-3 right-6 text-white font-poppins text-sm uppercase">
+        <div class="absolute bottom-3 right-6 text-white font-poppins text-sm uppercase" 
+            data-categorie="{{ photo.terms('categorie')|join(', ') }}" >
             {% for categorie in photo.terms('categorie') %}
                 {{ categorie }}
             {% endfor%}

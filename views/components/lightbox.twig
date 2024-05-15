@@ -19,11 +19,11 @@
 
                 <!-- Image and metadata container -->
                 <div class="flex flex-col items-center">
-                    <img :src="photos[currentIndex].thumbnail_src" alt="" class="object-contain max-h-[80vh] w-auto">
+                    <img :src="currentPhoto().thumbnail_src" alt="" class="object-contain max-h-[80vh] w-auto">
                     <div class="flex justify-between items-center w-full mt-2">
-                        <p class="text-white uppercase font-spacemono text-sm" x-text="photos[currentIndex].reference">
+                        <p class="text-white uppercase font-spacemono text-sm" x-text="currentPhoto().reference">
                         </p>
-                        <p class="text-white uppercase font-spacemono text-sm" x-text="photos[currentIndex].categorie">
+                        <p class="text-white uppercase font-spacemono text-sm" x-text="currentPhoto().categorie">
                         </p>
                     </div>
                 </div>
@@ -43,19 +43,6 @@
         return {
             open: false, // Lightbox visibility state
             currentIndex: 0, // Index of currently displayed image
-            photos: [
-                {% for photo in photos %}
-                    {
-                        thumbnail_src: '{{ photo.thumbnail.src }}',
-                        reference: '{{ photo.meta("reference") }}',
-                        categorie:
-                            {% for categorie in photo.terms('categorie') %}
-                            '{{ categorie }}'
-                            {% endfor %}
-                    },
-                {% endfor %}
-            ],
-
             // Event handler for opening the lightbox
             handleOpen(event) {
                 this.currentIndex = event.detail.index;
@@ -65,11 +52,30 @@
                 this.open = false;
             },
             next() {
-                this.currentIndex = this.currentIndex < this.photos.length - 1 ? this.currentIndex + 1 : 0;
+                if (this.currentIndex < this.getPhotos().length - 1) {
+                    this.currentIndex++;
+                } else {
+                    this.currentIndex = 0;
+                }
             },
             prev() {
-                this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.photos.length - 1;
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                } else {
+                    this.currentIndex = this.getPhotos().length - 1;
+                }
             },
+            getPhotos() {
+                // Dynamically query the photo data from the DOM
+                return Array.from(document.querySelectorAll('.photo-card')).map(card => ({
+                    thumbnail_src: card.querySelector('img').src,
+                    reference: card.querySelector('[data-reference]').dataset.reference,
+                    categorie: card.querySelector('[data-categorie]').dataset.categorie
+                }));
+            },
+            currentPhoto() {
+                return this.getPhotos()[this.currentIndex];
+            }
         }
     }
 </script>
