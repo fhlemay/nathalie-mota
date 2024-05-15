@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 gap-5 mt-5 mb-6 md:grid-cols-2 md:mt-12 md:mb-28">
+<div id="photo-grid" class="grid grid-cols-1 gap-5 mt-5 mb-6 md:grid-cols-2 md:mt-12 md:mb-28">
 
     {% for photo in photos %}
 
@@ -7,6 +7,6 @@
 
     {% endfor %}
 
-    {% include '/components/lightbox.twig' with {'photos': photos} %}
-
 </div>
+
+{% include '/components/lightbox.twig' with {'photos': photos} %}

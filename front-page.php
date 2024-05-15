@@ -51,11 +51,12 @@ $context['formats'] = get_terms([
 ]);
 
 
-$tmp_photos = Timber::get_posts([
+// Retrieve the initial set of photos
+$initial_set_photos = Timber::get_posts([
     'post_type' => 'photo',
-    'posts_per_page' => 8, 
+    'posts_per_page' => 8,
 ]);
 
-$context['tmp_photos'] =  $tmp_photos;
+$context['initial_set_photos'] =  $initial_set_photos;
 
 Timber::render($current_template, $context);
