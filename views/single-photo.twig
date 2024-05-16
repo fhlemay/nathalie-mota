@@ -48,8 +48,8 @@
         Vous aimeriez aussi
     </h2>
 
-    {{ include( '/components/photo-grid.twig', {'photos': related_posts} ) }}
-
+    {# Page set to 1 if no pagination for this component #}
+    {% include '/components/photo-grid.twig' with {'photos': related_posts, 'page': 1}  %}
 
 </section>
 
