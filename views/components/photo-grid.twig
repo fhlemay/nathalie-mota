@@ -1,11 +1,6 @@
 <div id="photo-grid" class="grid grid-cols-1 gap-5 mt-5 mb-6 md:grid-cols-2 md:mt-12 md:mb-10">
 
-    {% for photo in photos %}
-
-    {# loop.index0 : twig's loop variable : The current iteration of the loop. (0 indexed)#}
-    {% include '/components/photo-card.twig' with {'photo': photo, 'index': loop.index0} %}
-
-    {% endfor %}
+    {% include '/components/photo-cards.twig' with {'photos': photos, 'page': page} %}
 
 </div>
 

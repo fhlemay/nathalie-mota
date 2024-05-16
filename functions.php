@@ -106,6 +106,7 @@ function nathalie_mota_get_photos(WP_REST_Request $request) {
 
     $context = Timber::context();
     $context['photos'] = $photos;
+    $context['page'] = $page;
     $html = Timber::compile('/components/photo-cards.twig', $context);
 
     echo $html;

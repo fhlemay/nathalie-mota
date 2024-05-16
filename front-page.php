@@ -59,5 +59,6 @@ $initial_set_photos = Timber::get_posts([
 ]);
 
 $context['initial_set_photos'] =  $initial_set_photos;
+$context['page'] = 1; // first page
 
 Timber::render($current_template, $context);
