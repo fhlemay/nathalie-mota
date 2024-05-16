@@ -6,6 +6,6 @@
     Catégorie : {{ term.name }}
 </h2>
 
-{{ include( '/components/photo-grid.twig', {'photos': posts} ) }}
+{{ include( '/components/photo-grid.twig', {'photos': posts, 'page': 1 } ) }}
 
 {% endblock %}
