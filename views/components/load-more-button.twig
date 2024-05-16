@@ -1,0 +1,15 @@
+{# TODO : make alpine and htmx to talk directly to each other, get rid of hidden input middle straw #}
+<div class="flex justify-center mb-10" x-data="{ page: 1 }">
+    <button 
+        id="load-more-button"
+        hx-get="{{ site.url }}/wp-json/nathalie-mota/v1/photos"
+        hx-include="#page-input"
+        hx-target="#photo-grid" 
+        hx-swap="beforeend"
+        x-on:click.prevent="page++; document.getElementById('page-input').value = page;" 
+        class="w-64 h-12 bg-mota-mid-grey rounded-sm font-spacemono text-xs">
+        Charger plus
+    </button>
+    <!-- Hold the current page value -->
+    <input type="hidden" id="page-input" name="page" value="1">
+</div>

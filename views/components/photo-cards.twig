@@ -1,0 +1,6 @@
+{% for photo in photos %}
+
+{# loop.index0 : twig's loop variable : The current iteration of the loop. (0 indexed)#}
+{% include '/components/photo-card.twig' with {'photo': photo, 'index': loop.index0} %}
+
+{% endfor %}

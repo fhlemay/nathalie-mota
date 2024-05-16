@@ -81,3 +81,36 @@ function add_to_context($context)
 
     return $context;
 }
+
+
+
+
+
+function nathalie_mota_register_routes() {
+    register_rest_route('nathalie-mota/v1', '/photos', [
+        'methods' => 'GET',
+        'callback' => 'nathalie_mota_get_photos',
+    ]);
+}
+
+function nathalie_mota_get_photos(WP_REST_Request $request) {
+
+    $page = $request->get_param('page');
+
+    $args = [
+        'post_type' => 'photo',
+        'posts_per_page' => 8,
+        'paged' => $page
+    ];
+    $photos = Timber::get_posts($args);
+
+    $context = Timber::context();
+    $context['photos'] = $photos;
+    $html = Timber::compile('/components/photo-cards.twig', $context);
+
+    echo $html;
+    exit();
+
+}
+
+add_action('rest_api_init', 'nathalie_mota_register_routes');

@@ -55,6 +55,7 @@ $context['formats'] = get_terms([
 $initial_set_photos = Timber::get_posts([
     'post_type' => 'photo',
     'posts_per_page' => 8,
+    'paged' => 1
 ]);
 
 $context['initial_set_photos'] =  $initial_set_photos;
