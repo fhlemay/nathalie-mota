@@ -7,6 +7,17 @@ Timber\Timber::init();
 // Sets the directories (inside your theme) to find .twig files.
 Timber::$dirname = ['views'];
 
+// Include all files in inc
+// when you load a file using require_once in functions.php, the contents of that file (such as functions, classes, and global variables) become available throughout your WordPress theme. This includes all template files such as front-page.php, header.php, footer.php, and others.
+$inc_dir = get_template_directory() . '/inc/';
+$files = glob($inc_dir . '*.php'); // Use glob to get all PHP files in the directory
+// Include each file
+foreach ($files as $file) {
+    if (file_exists($file)) {
+        require_once $file;
+    }
+}
+
 add_theme_support('post-thumbnails');  // prise en charge des images mises en avant
 add_theme_support('title-tag');  // ajouter auto. le titre du site dans l'en-tête
 
