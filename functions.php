@@ -34,15 +34,6 @@ function add_defer_attribute($tag, $handle)
 
 add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
 
-function register_menus()
-{
-    register_nav_menus(array(
-        'main' => 'Menu Principal',
-        'footer' => 'Bas de page',
-    ));
-}
-
-add_action('init', 'register_menus');
 
 // Images sizes
 // From the beginings : no resize
