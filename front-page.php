@@ -51,13 +51,14 @@ $context['formats'] = get_terms([
 ]);
 
 
-// Retrieve the initial set of photos
-$initial_set_photos = Timber::get_posts([
-    'post_type' => 'photo',
-    'posts_per_page' => 8,
-    'paged' => 1
-]);
+// Initial photo set query parameters (no filter).
+$page = 1;
+$order = 'DESC';
+$categorie = '';
+$format = '';
 
-$context['initial_set_photos'] =  $initial_set_photos;
+$photos = front_page_query($page, $order, $categorie, $format);
+
+$context['initial_set_photos'] =  $photos;
 
 Timber::render($current_template, $context);

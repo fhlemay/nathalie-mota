@@ -3,7 +3,6 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 Timber\Timber::init();
-
 // Sets the directories (inside your theme) to find .twig files.
 Timber::$dirname = ['views'];
 
@@ -106,14 +105,17 @@ function nathalie_mota_register_routes() {
 
 function nathalie_mota_get_photos(WP_REST_Request $request) {
 
-    $page = $request->get_param('page');
+    // echo "<br>TEsT<br>";
+    // TO CHECK : when filters state changes, should always be the first page.
+    $page = (int)($request->get_param('page') ?? 1);
 
-    $args = [
-        'post_type' => 'photo',
-        'posts_per_page' => 8,
-        'paged' => $page
-    ];
-    $photos = Timber::get_posts($args);
+    // filter parameters
+    $categorie = $request->get_param('categorie') ?? '';
+    $format = $request->get_param('format') ?? '';
+    $order = $request->get_param('order') ?? 'DESC';
+
+    // include get_template_directory() . '/inc/front-page-query.php';
+    $photos = front_page_query($page, $order, $categorie, $format);
 
     $context = Timber::context();
     $context['photos'] = $photos;
@@ -121,6 +123,7 @@ function nathalie_mota_get_photos(WP_REST_Request $request) {
     $html = Timber::compile('/components/photo-cards.twig', $context);
 
     echo $html;
+    // echo "<br>TEXT<br>";
     exit();
 
 }
