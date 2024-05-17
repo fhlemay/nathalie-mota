@@ -2,9 +2,6 @@
 // Load Composer dependencies.
 require_once __DIR__ . '/vendor/autoload.php';
 
-Timber\Timber::init();
-// Sets the directories (inside your theme) to find .twig files.
-Timber::$dirname = ['views'];
 
 // Include all files in inc
 // when you load a file using require_once in functions.php, the contents of that file (such as functions, classes, and global variables) become available throughout your WordPress theme. This includes all template files such as front-page.php, header.php, footer.php, and others.
@@ -48,7 +45,7 @@ function add_defer_attribute($tag, $handle)
 
 add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
 
-function register_my_menus()
+function register_menus()
 {
     register_nav_menus(array(
         'main' => 'Menu Principal',
@@ -56,7 +53,7 @@ function register_my_menus()
     ));
 }
 
-add_action('init', 'register_my_menus');
+add_action('init', 'register_menus');
 
 // Images sizes
 // From the beginings : no resize
@@ -73,24 +70,6 @@ update_option('medium_size_h', 300);
 update_option('large_size_w', 768);
 update_option('large_size_h', 768);
 
-add_filter('timber/context', 'add_to_context');
-
-/**
- * Global Timber context.
- *
- * @param array $context Global context variables.
- */
-function add_to_context($context)
-{
-    // So here you are adding data to Timber's context object, i.e...
-    $context['foo'] = 'I am some other typical value set in your functions.php file, unrelated to the menu';
-
-    // Now, in similar fashion, you add a Timber Menu and send it along to the context.
-    $context['main_menu'] = Timber::get_menu('main');
-    $context['footer_menu'] = Timber::get_menu('footer');
-
-    return $context;
-}
 
 
 
@@ -105,7 +84,6 @@ function nathalie_mota_register_routes() {
 
 function nathalie_mota_get_photos(WP_REST_Request $request) {
 
-    // echo "<br>TEsT<br>";
     // TO CHECK : when filters state changes, should always be the first page.
     $page = (int)($request->get_param('page') ?? 1);
 
@@ -123,7 +101,6 @@ function nathalie_mota_get_photos(WP_REST_Request $request) {
     $html = Timber::compile('/components/photo-cards.twig', $context);
 
     echo $html;
-    // echo "<br>TEXT<br>";
     exit();
 
 }
