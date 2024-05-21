@@ -13,28 +13,34 @@
 <!-- Filter -->
 <search>
 
-    <div class="flex flex-col items-center py-7 gap-2 md:justify-between md:flex-row md:pt-20 md:pb-10">
+        <form
+            id="filter-form"
+            hx-get="{{ site.url }}/wp-json/nathalie-mota/v1/photos"
+            hx-target="#photo-grid"
+            hx-swap="innerHTML"
+            hx-trigger="input-state-has-changed from:form"
+            class="flex flex-col items-center py-7 gap-2 md:justify-between md:flex-row md:pt-20 md:pb-10"
+        >
+            <div class="flex flex-col gap-2 md:flex-row md:gap-9">
 
-        <div class="flex flex-col gap-2 md:flex-row md:gap-9">
+                {% include '/components/filter-dropdown.twig' with {'slug': 'categorie', 'items': categories, 'default_label': 'catégorie'} %}
 
-            {% include '/components/filter-dropdown.twig' with {'items': categories, 'default_label': 'catégorie'} %}
+                {% include '/components/filter-dropdown.twig' with {'slug': 'format', 'items': formats, 'default_label': 'format'} %}
 
-            {% include '/components/filter-dropdown.twig' with {'items': formats, 'default_label': 'formats'} %}
+            </div>
 
-        </div>
-
-        {% include '/components/filter-dropdown.twig' with 
-            {
-                'items': 
-                    [
-                        {'name': 'des plus anciennes', 'slug': 'old'},
-                        {'name': 'des plus récentes', 'slug': 'new'}
-                    ],
-                'default_label': 'Trier à partir'
-            }
-        %}
-
-    </div>
+            {#% include '/components/filter-dropdown.twig' with 
+                {
+                    'slug': 'order',
+                    'items': 
+                        [
+                            {'name': 'anciennes'},
+                            {'name': 'récentes'}
+                        ],
+                    'default_label': 'Trier à partir des plus...'
+                }
+            %#}
+        </form>
 </search>
 
 <!-- Photos grid -->

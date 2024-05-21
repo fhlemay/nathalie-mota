@@ -1,17 +1,31 @@
-<div x-data="{ open: false, selected: '{{ default_label }}', selectedValue: '' }" @click.away="open = false" class="relative">
+<div 
+    x-data="{ open: false, selectedValue: '' }" 
+    @click.away="open = false" class="relative"
+>
 
     <!-- Dropdown Trigger -->
     <button
-        @click="open = !open"
-        class="w-64 px-[18px] py-[11px] rounded-lg bg-transparent border border-mota-mid-grey font-poppins uppercase flex justify-between items-center">
-        <span x-text="selected"></span>
+        @click.prevent="open = !open"
+        class="w-64 px-[18px] py-[11px] rounded-lg bg-transparent border border-mota-mid-grey font-poppins uppercase flex justify-between items-center"
+    >
+        {# 
+           Input : important pour pouvoir utiliser pleinement les
+           fonctionnalités liées aux formulaires (htmx : ajax)
+        #}
+        <input 
+            name= "{{ slug }}"
+            type="text"
+            placeholder="{{ default_label|upper }}"
+            x-model="selectedValue"
+            class="uppercase w-full bg-transparent border-none focus:outline-none cursor-pointer placeholder-black"
+            readonly
+        >
         <svg 
             :class="{'rotate-180': open, 'rotate-0': !open}"
             class="fill-current h-4 w-4 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
         </svg>
     </button>
-
     <!-- Dropdown Menu -->
     <div
         x-show="open"
@@ -29,21 +43,23 @@
             <li>
                 <a href="#" 
                     @click.prevent=" {# reset if clicked again #}
-                       if (selectedValue === '{{ item.slug }}') {
-                           selected = '{{ default_label }}';
+                       if (selectedValue === '{{ item.name }}') {
                            selectedValue = '';
                        } else {
-                           selected = '{{ item.name|upper }}';
-                           selectedValue = '{{ item.slug }}';
+                           selectedValue = '{{ item.name }}';
                        }
-                       open = false"
-                    :class="{'bg-mota-red text-white': selectedValue === '{{ item.slug}}' }"
-                    class="block px-4 py-2 text-sm leading-5 text-left cursor-pointer hover:bg-mota-light-red active:bg-mota-mid-red">
-                    {{ item.name|upper }}
+                       open = false;
+                       {# Indicate that the component's state has changed #}
+                       $nextTick(() => {
+                            $dispatch('input-state-has-changed');
+                       });
+                    "
+                    :class="{'bg-mota-red text-white': selectedValue === '{{ item.name }}' }"
+                    class="block px-4 py-2 text-sm capitalize leading-5 text-left cursor-pointer hover:bg-mota-light-red active:bg-mota-mid-red">
+                    {{ item.name }}
                 </a>
             </li>
             {% endfor %}
-
         </ul>
     </div>
 </div>
