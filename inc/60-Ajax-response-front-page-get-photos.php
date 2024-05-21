@@ -15,7 +15,21 @@ function nathalie_mota_get_photos(WP_REST_Request $request) {
     // filter parameters
     $categorie = $request->get_param('categorie') ?? '';
     $format = $request->get_param('format') ?? '';
-    $order = $request->get_param('order') ?? 'DESC';
+    $order = $request->get_param('order');
+
+    // TODO : that's smelly -> decoupled the component data from the back-end.
+    if ($order !== 'ASC' && $order !== 'DESC') {
+        switch ($order) {
+            case 'anciennes': // component's data that shouldn't be here.
+                $order = 'ASC';
+                break;
+            case 'récentes' :
+                $order = 'DESC';
+                break;
+            default:
+                $order = 'DESC';
+        }
+    }
 
     $photos = front_page_query($page, $order, $categorie, $format);
 
