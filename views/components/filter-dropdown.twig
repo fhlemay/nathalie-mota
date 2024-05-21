@@ -51,7 +51,7 @@
                        open = false;
                        {# Indicate that the component's state has changed #}
                        $nextTick(() => {
-                            $dispatch('input-state-has-changed');
+                            $dispatch('form-input-state-has-changed');
                        });
                     "
                     :class="{'bg-mota-red text-white': selectedValue === '{{ item.name }}' }"

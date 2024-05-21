@@ -3,10 +3,13 @@
     <button 
         id="load-more-button"
         hx-get="{{ site.url }}/wp-json/nathalie-mota/v1/photos"
-        hx-include="#page-input"
+        hx-include="#page-input, #filter-form"
         hx-target="#photo-grid" 
         hx-swap="beforeend"
-        x-on:click.prevent="page++; document.getElementById('page-input').value = page;" 
+        @click.prevent="page++; document.getElementById('page-input').value = page;" 
+        {# Reset pagination if filter applied  #}
+            {# TODO : make that work -> @htmx:after-settled.window="page=1" #}
+        @form-input-state-has-changed.window="page=1"
         class="w-64 h-12 bg-mota-mid-grey rounded-sm font-spacemono text-xs">
         Charger plus
     </button>
