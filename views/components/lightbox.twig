@@ -68,7 +68,12 @@
             getPhotos() {
                 // Dynamically query the photo data from the DOM
                 return Array.from(document.querySelectorAll('.photo-card')).map(card => ({
-                    thumbnail_src: card.querySelector('img').src,
+                    {# 
+                        Some regex here because the card.img.src is a cropped and reduce version.
+                        This regex matches any sequence of - followed by digits, an x, more digits, 
+                        and ensures it’s followed by a file extension. Is gives the full size img.
+                    #}
+                    thumbnail_src: (card.querySelector('img').src).replace(/-\d+x\d+(?=\.\w+$)/, ''),
                     reference: card.querySelector('[data-reference]').dataset.reference,
                     categorie: card.querySelector('[data-categorie]').dataset.categorie
                 }));
