@@ -10,7 +10,7 @@
         <!-- Link to photo's page -->
         <div class="absolute inset-0 w-full flex items-center justify-center">
             <a href="{{ photo.link }}">
-                <img src="{{ theme.link }}/assets/img/Icon_eye.svg" alt="Eye Icon" class="w-11 h-auto">
+                <img src="{{ theme.link }}/assets/img/Icon_eye.svg" alt="Eye Icon" class="w-7 md:w-11 h-auto">
             </a>
         </div>
 
@@ -21,17 +21,17 @@
             {# open-lightbox will be dispatched trough the DOM until it reaches the window object #}
             @click.prevent="$dispatch('open-lightbox', { 'index' : {{ index }} })"
             title="Open in Lightbox" class="absolute top-3 right-5">
-            <img src="{{ theme.link }}/assets/img/Icon_fullscreen.svg" alt="Full-Screen Icon" class="w-9 h-auto">
+            <img src="{{ theme.link }}/assets/img/Icon_fullscreen.svg" alt="Full-Screen Icon" class="w-6 md:w-9 h-auto">
         </button>
 
         <!-- Reference id -->
-        <div class="absolute bottom-3 left-4 text-white font-poppins text-sm uppercase"
+        <div class="absolute bottom-3 left-4 text-white font-poppins text-xs md:text-sm uppercase"
             data-reference="{{ photo.meta('reference') }}">
             {{ photo.meta('reference') }}
         </div>
 
         <!-- Category -->
-        <div class="absolute bottom-3 right-6 text-white font-poppins text-sm uppercase" 
+        <div class="absolute bottom-3 right-6 text-white font-poppins text-xs md:text-sm uppercase" 
             data-categorie="{{ photo.terms('categorie')|join(', ') }}" >
             {% for categorie in photo.terms('categorie') %}
                 {{ categorie }}
