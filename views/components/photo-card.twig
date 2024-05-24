@@ -1,7 +1,15 @@
 <!-- Photo Container -->
-<div class="photo-card relative aspect-square w-full overflow-hidden group" x-data="{ overlay: false }">
+{% set photo_desktop = photo.thumbnail.src('photo-card-desktop') %}
+{% set photo_mobile = photo.thumbnail.src('photo-card-mobile') %}
+
+
+<div class="photo-card relative h-[279px] md:h-[495px] w-full overflow-hidden group" x-data="{ overlay: false }">
     <!-- Photo -->
-    <img src="{{ photo.thumbnail.src }}" alt="" class="w-full h-full object-cover">
+    <img src="{{ photo_desktop }}"
+         srcset="{{ photo_mobile }} 318w, {{ photo_desktop }} 566w"
+         sizes="(max-width: 375px) 318px, 566px"
+         alt="{{ photo.title }}" 
+         class="w-full h-full object-cover">
 
     <!-- Overlay -->
     <div x-show="overlay" @mouseenter="overlay = true" @mouseleave="overlay = false"
