@@ -1,3 +1,9 @@
-{# TODO : fix image size (create an wp image size for it) #}
+{% set photo_desktop = photo.thumbnail.src('single-photo-desktop') %}
+{% set photo_mobile = photo.thumbnail.src('single-photo-mobile') %}
+
 {# TODO : add appropriated attibutes #}
-<img src="{{ photo.thumbnail.src }}" class="max-h-full max-w-full object-contain">
+<img src="{{ photo_desktop }}" 
+     srcset="{{ photo_mobile }} 265w, {{ photo_desktop }} 566w"
+     sizes="(max-width: 375px) 265px, 566px"
+     alt="{{ photo.title }}" 
+     class="max-h-full max-w-full object-contain">
