@@ -28,7 +28,9 @@
             {# $dispatch permits inter-components communication by dispatching browser events #}
             {# open-lightbox will be dispatched trough the DOM until it reaches the window object #}
             @click.prevent="$dispatch('open-lightbox', { 'index' : {{ index }} })"
-            title="Open in Lightbox" class="absolute top-3 right-5">
+            title="Open in Lightbox"
+            {# Lightbox desactivated in mobile mode #}
+            class="hidden md:visible absolute top-3 right-5">
             <img src="{{ theme.link }}/assets/img/Icon_fullscreen.svg" alt="Full-Screen Icon" class="w-6 md:w-9 h-auto">
         </button>
 
