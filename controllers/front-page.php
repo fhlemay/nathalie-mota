@@ -1,7 +1,8 @@
 <?php
 
 
-use Timber\Timber;
+// use Timber\Timber;
+use Timber\Image;
 
 $current_template = pathinfo(__FILE__, PATHINFO_FILENAME) . '.twig';
 
@@ -26,11 +27,7 @@ if ($hero_post_query->have_posts()) {
     while ($hero_post_query->have_posts()) {
         $hero_post_query->the_post();
         $post_id = get_the_ID();
-        $hero_image_url = get_the_post_thumbnail_url($post_id, 'full');
-        $hero_image_alt = get_the_title($post_id);
-
-        $context['hero_image_url'] = $hero_image_url;
-        $context['hero_image_alt'] = $hero_image_alt;
+        $context['hero'] =  Timber::get_post($post_id);
     }
 
     wp_reset_postdata();

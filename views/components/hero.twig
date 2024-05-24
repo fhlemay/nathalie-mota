@@ -1,5 +1,13 @@
+{% set hero_desktop = hero.thumbnail.src('hero-desktop') %}
+{% set hero_mobile = hero.thumbnail.src('hero-mobile') %}
+
 <div class="w-dvw max-w-[1440px] relative">
-    <img src="{{ hero_image_url }}" alt="{{ hero_image_alt }}" class="w-full h-auto">
+    <img src="{{ hero_desktop }}"
+         srcset="{{ hero_mobile }} 375w, {{ hero_desktop }} 1440w"
+         size="(max-width: 375px) 375px, 1440px"
+         sizes="{{ hero.thumbnail.img_sizes('hero-mobile') }}; {{ hero.thumbnail.img_sizes('hero-desktop') }}"
+         alt="{{ hero.title }}" 
+         class="w-full h-auto">
     <h1 class="uppercase text-hero font-bold font-spacemono italic text-outline text-center
                    w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         {{ site.description }}
