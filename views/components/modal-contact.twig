@@ -1,22 +1,19 @@
 <!-- Contact modal -->
-<div x-cloak
-     x-show="contactModalOpened" 
-     class="fixed z-10 left-0 top-8 w-full h-full transition-opacity">
+<div x-data="{ open: false }" 
+     @open-modal-contact.window="open = true"
+     @keydown.escape.window="open = false"
+     x-show="open"
+     class="fixed z-10 left-0 top-8 w-full h-full transition-opacity" >
+        <!-- Modal content -->
+        <div @click.outside="open = false"
+            class="overflow-hidden h-[583px] w-[286px] border-4 border-black bg-white my-2 mx-auto flex flex-col items-center md:h-[769px] md:w-[597px]">
+            <img class="h-[55px] mt-2 mb-4 max-w-none md:mt-3 md:mb-10 md:h-[106px]"
+                src="{{ theme.link }}/assets/img/contact-header-desktop.svg" alt="Contact">
 
-    <!-- Modal content -->
-    <div 
-            @click.outside="contactModalOpened = false"
-            class="modal-content
-                overflow-hidden h-[583px] w-[286px] border-4 border-black bg-white my-2 mx-auto flex flex-col items-center
-                md:h-[769px] md:w-[597px]
-                ">
+            {% apply shortcodes %}
+            [contact-form-7 id="6ade87d" title="contact"]
+            {% endapply %}
 
-        <img class="h-[55px] mt-2 mb-4 max-w-none md:mt-3 md:mb-10 md:h-[106px]"
-            src="{{ theme.link }}/assets/img/contact-header-desktop.svg" alt="Contact">
-
-        {% apply shortcodes %}
-        [contact-form-7 id="6ade87d" title="contact"]
-        {% endapply %}
-
-    </div>
+        </div>
 </div>
+

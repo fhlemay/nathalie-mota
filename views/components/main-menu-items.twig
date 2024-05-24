@@ -7,4 +7,9 @@
 {% endfor %}
 
 <!-- Contact modal button -->
-<li><a @click="contactModalOpened = true" class="hover:font-bold" href="#">Contact</a></li>
+<li>
+    <a x-data @click.prevent="$dispatch('open-modal-contact'); console.log('Event sent')" 
+       class="hover:font-bold" href="#">
+        Contact
+    </a>
+</li>
