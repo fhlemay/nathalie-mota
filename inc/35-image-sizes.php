@@ -12,8 +12,8 @@ function remove_default_image_sizes($sizes) {
 add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
 
 function my_custom_sizes() {
-    add_image_size('hero-desktop', 1440, 1440, false);
-    add_image_size('hero-mobile', 375, 375, false);
+    add_image_size('hero-desktop', 1440, 9999, false);
+    add_image_size('hero-mobile', 375, 9999, false);
     add_image_size('photo-card-desktop', 566, 495, true);
     add_image_size('photo-card-mobile', 318, 279, true);
     add_image_size('single-photo-desktop', 566, 9999, false);
