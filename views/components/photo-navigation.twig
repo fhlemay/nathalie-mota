@@ -8,12 +8,14 @@
         </div>
         <!-- Prev/next photo navigation arrows -->
         <div class="flex flex-row w-full justify-end gap-7">
-            <a @mouseenter="hoverThumbnailSrc = '{{ photo.prev.thumbnail.src }}'" @mouseleave="hoverThumbnailSrc = ''"
-                href="{{ photo.prev.link }}" class="flex-1">
+            <a @mouseenter="hoverThumbnailSrc = '{{ photo.prev.thumbnail.src('photo-nav-thumbnail') }}'" 
+               @mouseleave="hoverThumbnailSrc = ''"
+               href="{{ photo.prev.link }}" class="flex-1"
+            >
                 <img x-show="{{ photo.prev ? 'true' : 'false' }} " src="{{ theme.link }}/assets/img/previous.svg"
                     alt="previous" class="">
             </a>
-            <a @mouseenter="hoverThumbnailSrc = '{{ photo.next.thumbnail.src }}'" @mouseleave="hoverThumbnailSrc = ''"
+            <a @mouseenter="hoverThumbnailSrc = '{{ photo.next.thumbnail.src('photo-nav-thumbnail') }}'" @mouseleave="hoverThumbnailSrc = ''"
                 href="{{ photo.next.link }}" class="flex-1">
                 <img x-show="{{ photo.next ? 'true' : 'false' }} " src="{{ theme.link }}/assets/img/next.svg" alt="next"
                     class="">

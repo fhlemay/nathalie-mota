@@ -18,6 +18,7 @@ function my_custom_sizes() {
     add_image_size('photo-card-mobile', 318, 279, true);
     add_image_size('single-photo-desktop', 566, 9999, false);
     add_image_size('single-photo-mobile', 265, 9999, false);
+    add_image_size('photo-nav-thumbnail', 80, 80, true);
 }
 add_action('after_setup_theme', 'my_custom_sizes');
 
