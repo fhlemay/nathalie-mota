@@ -1,5 +1,4 @@
 <?php
-
 // Remove the default meta boxes of custom taxonomies to replace them with a custom versions.
 function remove_custom_taxonomies_default_meta_box()
 {
@@ -55,7 +54,7 @@ function categorie_meta_box_html($post)
   $terms = get_terms(array('taxonomy' => 'categorie', 'hide_empty' => false));
   foreach ($terms as $term) {
     $checked = has_term($term->term_id, 'categorie', $post) ? 'checked' : '';
-    echo '<input type="checkbox" name="categorie[]" value="' . esc_attr($term->term_id) . '" ' . $checked . '> ' . esc_html($term->name) . '<br />';
+    echo '<input type="radio" name="categorie" value="' . esc_attr($term->term_id) . '" ' . $checked . '> ' . esc_html($term->name) . '<br />';
   }
 }
 
