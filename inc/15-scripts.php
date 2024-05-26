@@ -11,7 +11,7 @@ add_action('wp_enqueue_scripts', 'nathalie_mota_scripts');
 // Add defer to Alpine.js script : differ the script exec to the end of the document
 function add_defer_attribute($tag, $handle)
 {
-    if ('alpinejs' !== $handle)
+    if ('alpinejs' !== $handle && 'htmx' !== $handle)
         return $tag;
     return str_replace(' src', ' defer="defer" src', $tag);
 }
