@@ -9,7 +9,9 @@
          srcset="{{ photo_mobile }} 318w, {{ photo_desktop }} 566w"
          sizes="(max-width: 375px) 318px, 566px"
          alt="{{ photo.title }}" 
-         class="w-full h-full object-cover">
+         class="w-full h-full object-cover"
+         loading="lazy"
+         >
 
     <!-- Overlay -->
     <div x-show="overlay" @mouseenter="overlay = true" @mouseleave="overlay = false"
