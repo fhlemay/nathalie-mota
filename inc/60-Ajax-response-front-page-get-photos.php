@@ -9,7 +9,6 @@ function nathalie_mota_register_routes() {
 
 function nathalie_mota_get_photos(WP_REST_Request $request) {
 
-    // TO CHECK : when filters state changes, should always be the first page.
     $page = (int)($request->get_param('page') ?? 1);
 
     // filter parameters

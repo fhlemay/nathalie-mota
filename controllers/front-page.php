@@ -1,8 +1,7 @@
 <?php
 
 
-// use Timber\Timber;
-use Timber\Image;
+use Timber\Timber;
 
 $current_template = pathinfo(__FILE__, PATHINFO_FILENAME) . '.twig';
 

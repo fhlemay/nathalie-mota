@@ -1,7 +1,7 @@
 {% for photo in photos %}
 
-{# Adjuste index to the page. Each page contains 8 photo-cards. #}
-{% set adjusted_index = ((page - 1) * 8) + loop.index0 %}
-{% include '/components/photo-card.twig' with {'photo': photo, 'index': adjusted_index} %}
+    {# Adjuste index to the page. Each page contains 8 photo-cards. #}
+    {% set adjusted_index = ((page - 1) * 8) + loop.index0 %}
+    {% include '/components/photo-card.twig' with {'photo': photo, 'index': adjusted_index} %}
 
 {% endfor %}

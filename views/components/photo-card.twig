@@ -1,8 +1,7 @@
-<!-- Photo Container -->
 {% set photo_desktop = photo.thumbnail.src('photo-card-desktop') %}
 {% set photo_mobile = photo.thumbnail.src('photo-card-mobile') %}
 
-
+<!-- Photo Container -->
 <div class="photo-card relative h-[279px] md:h-[495px] w-full overflow-hidden group" x-data="{ overlay: false }">
     <!-- Photo -->
     <img src="{{ photo_desktop }}"
