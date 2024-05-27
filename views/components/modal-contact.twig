@@ -1,8 +1,8 @@
 <!-- Contact modal -->
-<div x-data="{ open: false }" 
+<div x-data="{ open: false }"
      @open-modal-contact.window="open = true"
      @keydown.escape.window="open = false"
-     x-show="open"
+     x-show="open" x-cloak
      class="fixed z-10 left-0 top-8 w-full h-full transition-opacity" >
         <!-- Modal content -->
         <div @click.outside="open = false"
