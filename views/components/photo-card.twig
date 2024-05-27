@@ -2,7 +2,8 @@
 {% set photo_mobile = photo.thumbnail.src('photo-card-mobile') %}
 
 <!-- Photo Container -->
-<div class="photo-card relative h-[279px] md:h-[495px] w-full overflow-hidden group" x-data="{ overlay: false }">
+<div x-data="{ overlay: false }"
+    class="photo-card relative h-[279px] md:h-[495px] w-full overflow-hidden group">
     <!-- Photo -->
     <img src="{{ photo_desktop }}"
          srcset="{{ photo_mobile }} 318w, {{ photo_desktop }} 566w"
@@ -10,7 +11,7 @@
          alt="{{ photo.title }}" 
          class="w-full h-full object-cover"
          loading="lazy"
-         >
+    >
 
     <!-- Overlay -->
     <div x-show="overlay" @mouseenter="overlay = true" @mouseleave="overlay = false"
