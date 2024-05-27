@@ -4,6 +4,7 @@ function nathalie_mota_register_routes() {
     register_rest_route('nathalie-mota/v1', '/photos', [
         'methods' => 'GET',
         'callback' => 'nathalie_mota_get_photos',
+        'permission_callback' => '__return_true'
     ]);
 }
 
