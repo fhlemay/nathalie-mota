@@ -3,8 +3,7 @@
     <nav class="border-t border-t-black">
         <ul class="
         flex flex-col items-center justify-center gap-6 uppercase font-spacemono text-base py-11
-        md:flex-row md:gap-16 md:h-10 md:py-0
-        ">
+        md:flex-row md:gap-16 md:h-10 md:py-0">
 
             {% for item in footer_menu.items %}
             <li class="nav-footer-item {{ item.classes|join(' ') }}">
@@ -13,7 +12,7 @@
             </li>
             {% endfor %}
 
-            <li><a class="hover:font-bold" href="#">Tous droits réservés</a></li>
+            <li><p>Tous droits réservés</p></li>
 
         </ul>
     </nav>
