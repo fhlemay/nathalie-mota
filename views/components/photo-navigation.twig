@@ -1,32 +1,23 @@
+{# TODO : add smooth transitions #}
 <div class="relative">
     <div x-data="{ hoverThumbnailSrc: '' }" class="w-max flex flex-col gap-2 absolute right-0 -bottom-12">
         <!-- Prev/next photo thumbnail -->
-        <div x-show="hoverThumbnailSrc"
-            x-transition:enter="opacity-0"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            class="w-20 h-20 overflow-hidden relative transition-opacity duration-500 ease-in-out">
-            <img :src="hoverThumbnailSrc"
-                class="absolute bottom-0 left-0 min-w-full min-h-full object-cover">
+        <div class="w-20 h-20 overflow-hidden relative">
+            <img x-show="hoverThumbnailSrc" :src="hoverThumbnailSrc"
+                class="absolute bottom-0 left-0 min-w-full min-h-full object-cover border-none">
         </div>
         <!-- Prev/next photo navigation arrows -->
         <div class="flex flex-row w-full justify-end gap-7">
             <a @mouseenter="hoverThumbnailSrc = '{{ photo.prev.thumbnail.src('photo-nav-thumbnail') }}'" 
-                @mouseleave="hoverThumbnailSrc = ''"
-                href="{{ photo.prev.link }}" class="flex-1">
-
-                <img x-show="{{ photo.prev ? 'true' : 'false' }}"
-                    src="{{ theme.link }}/assets/img/previous.svg"
-                    alt="previous"
-                    class="">
+               @mouseleave="hoverThumbnailSrc = ''"
+               href="{{ photo.prev.link }}" class="flex-1"
+            >
+                <img x-show="{{ photo.prev ? 'true' : 'false' }} " src="{{ theme.link }}/assets/img/previous.svg"
+                    alt="previous" class="">
             </a>
-
-            <a @mouseenter="hoverThumbnailSrc = '{{ photo.next.thumbnail.src('photo-nav-thumbnail') }}'"
-                @mouseleave="hoverThumbnailSrc = ''"
+            <a @mouseenter="hoverThumbnailSrc = '{{ photo.next.thumbnail.src('photo-nav-thumbnail') }}'" @mouseleave="hoverThumbnailSrc = ''"
                 href="{{ photo.next.link }}" class="flex-1">
-
-                <img x-show="{{ photo.next ? 'true' : 'false' }}"
-                    src="{{ theme.link }}/assets/img/next.svg" alt="next"
+                <img x-show="{{ photo.next ? 'true' : 'false' }} " src="{{ theme.link }}/assets/img/next.svg" alt="next"
                     class="">
             </a>
         </div>
