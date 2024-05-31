@@ -64,7 +64,8 @@ function save_custom_taxonomies_meta($post_id)
 
   // Saving logic for 'categorie' taxonomy
   if (isset($_POST['categorie'])) {
-    $categorie = array_map('intval', $_POST['categorie']);
+    // $categorie = array_map('intval', $_POST['categorie']);
+    $categorie = intval($_POST['categorie']);
     wp_set_object_terms($post_id, $categorie, 'categorie');
   } else {
     wp_set_object_terms($post_id, [], 'categorie');
